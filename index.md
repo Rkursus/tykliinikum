@@ -15,7 +15,7 @@ Tegemist on statistikute lemmiktarkvara R-i koolitusega, kus saame ülevaate R k
 
 Koolitusprogramm koosneb kahest õppepäevast ja koduülesannetest. Õppepäevad toimuvad 2. ja 23. septembril 10-16 TÜ Delta õppehoones aud. 2030. Vt. täpset ajakava all.
 
-Teemadele läheneme praktiliselt, _hands-on_ põhimõttega - käsitletav teema on kokkuvõtlikult esitatud koolituse materjalides, teemat saadavad praktilised näited, mis teeme läbi kõigile nähtaval ekraanil ja lahendame lühikesi ülesandeid. Lahendamisel tekkinud probleemid lahendame kohapeal ja koos. Edasiste oskuste arendamiseks saab kasutada [lisamaterjale](lisamaterjal) (enamasti küll ingliskeelsed).
+Teemadele läheneme praktiliselt, _hands-on_	 põhimõttega - käsitletav teema on kokkuvõtlikult esitatud koolituse materjalides, teemat saadavad praktilised näited, mis teeme läbi kõigile nähtaval ekraanil ja lahendame lühikesi ülesandeid. Lahendamisel tekkinud probleemid lahendame kohapeal ja koos. Edasiste oskuste arendamiseks saab kasutada [lisamaterjale](lisamaterjal) (enamasti küll ingliskeelsed).
 
 Koolituse läbinud osaleja:
 

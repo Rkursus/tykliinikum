@@ -2,4 +2,4 @@
 layout: page
 ---
 
-{% include_relative /_praktikum4/kodutoo/kodutoo2.html %}
+{% include_relative /_kodutood/kodutoo2.html %}

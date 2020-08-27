@@ -2,4 +2,4 @@
 layout: page
 ---
 
-{% include_relative /_praktikum6/praktikum6.html %}
+{% include_relative /_teema6/teema6.html %}
