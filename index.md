@@ -7,93 +7,80 @@ layout: frontpage
 </div>
 
 
-# Õppeaine lühikirjeldus
+# Koolituse lühikirjeldus
 
-Tegemist on statistikute lemmik tarkvara R kursusega, kus antakse ülevaade R keele peamistest konstruktsioonidest ja andmetüüpidest, andmetöötlusvõimalustest ning hõlpsast jooniste tegemisest paketi `ggplot2` vahenditega.
+Tegemist on statistikute lemmiktarkvara R-i koolitusega, kus saame ülevaate R keele peamistest konstruktsioonidest ja andmetüüpidest, andmetöötlusvõimalustest, hõlpsast jooniste tegemisest paketi `ggplot2` vahenditega ja kiikame R Shiny interaktiivseid raporteid.
 
-Aine läbinud üliõpilane:
+## Koolituse ülesehitus ja sisu
+
+Koolitusprogramm koosneb kahest õppepäevast ja koduülesannetest. Õppepäevad toimuvad 2. ja 23. septembril 10-16 TÜ Delta õppehoones aud. 2030. Vt. täpset ajakava all.
+
+Teemadele läheneme praktiliselt, _hands-on_ põhimõttega - käsitletav teema on kokkuvõtlikult esitatud koolituse materjalides, teemat saadavad praktilised näited, mis teeme läbi kõigile nähtaval ekraanil ja lahendame lühikesi ülesandeid. Lahendamisel tekkinud probleemid lahendame kohapeal ja koos. Edasiste oskuste arendamiseks saab kasutada [lisamaterjale](lisamaterjal) (enamasti küll ingliskeelsed).
+
+Koolituse läbinud osaleja:
 
 * tunneb R keele süntaksit ja andmetüüpe,
 * oskab andmeid sisse lugeda, töödelda ja salvestada,
 * oskab kasutada kirjeldava statistika meetodeid,
-* oskab visualiseerida andmeid ja seoseid tunnuste vahel.
-
-<br/>
-
-# Õppeaine eesmärgid
-
-* Tutvustada üliõpilastele tarkvara R, anda ülevaade R-i võimalustest ja peamistest vigadest mida kiputakse tegema.
-* Õppida käske andmetest ülevaate saamiseks, andmete töötlemiseks ja visualiseerimiseks.
-* Tutvustada tarkvara R võimalusi reprodutseeritava analüüsi läbiviimiseks ning tulemuste visualiseerimiseks.
+* oskab visualiseerida andmeid ja seoseid tunnuste vahel,
+* koostada algelise interaktiivse raporti.
 
 
-Miks just R tarkvara?
+## Koolituse eesmärgid
 
-* R on programmeerimiskeel ja -keskkond, mis on peamiselt arendatud statistiliseks andmetöötluseks,
-* R-i kasutajaskond on viimase kümmekonna aasta jooksul [oluliselt kasvanud](r4stats.com/articles/popularity/) ülikoolides ja ettevõtetes,
-* [R on vabavara](https://cran.r-project.org/),
-* R-ga käib kaasas [lai valik lisapakette](https://cran.r-project.org/web/packages/available_packages_by_name.html),
-* R võimaldab tänapäeval juba [palju enamat](https://www.google.com/search?q=r+possibilities) kui ainult andmetöötlus,
-* R on ühildatav pea kõigi tuntumate andmetöötlusprogrammidega (nt. MS Excel, Tableau, SPSS, Qlik, Power BI, ...)
-* ...
+* Tutvustada osalejatele tarkvara R, anda ülevaade R-i võimalustest ja peamistest vigadest mida kiputakse tegema.
+* Õppida R-i funktsioone andmetest ülevaate saamiseks, andmete töötlemiseks ja visualiseerimiseks.
+* Tutvustada tarkvara R võimalusi esmase visuaalse analüüsi läbiviimiseks (sh. interaktiivse raporti abil).
 
-<br/>
 
-# Sihtgrupp
+# Ajakava ja sisu 
 
-Kursus on mõeldud statistikahuvilistele üliõpilastele, kes pole varem tarkvaraga R kokku puutunud. 
+Kolmapäev, 2. september
+-----
+9:45 	Kogunemine
+10:00 	Avasõnad, töökorralduse tutvustamine
+10:15 	**Esimene sessioon**
+	> R ja RStudio tutvustamine
+	> Ülevaade statistikakeelest R
+	
+12:00 	Lõunapaus (Delta kohvikus)
+12:45	**Teine sessioon**
+	> Töötamine erinevate andmetüüpidega
+	> Andmete importimine ja eksportimine
+	
+14:15	Kohvipaus (Delta kohvikus)
+14:30	**Kolmas sessioon**
+	> Andmestiku teisendused
+	
+16:00	Päeva kokkuvõte, kodutöö tutvustus
 
-<br/>
+**Kodus**
+I kodutöö (andmestiku import, R-i abivahendite kasutamine, andmestikust esmase ülevaate koostamine, andmetüüpide muutmine, esmatasandil arvutamine)
 
-# Õppetöö korraldus
 
-Õppeaines toimub kokku **10 praktikumi** + **1 projektide kaitsmise praktikum**. Praktikumid toimuvad klassiruumis.
+Kolmapäev, 23. september
+-----
+09:45	Kogunemine
+10:00	**Neljas sessioon**
+	> Eelmiste teemade kordamine, kodutöödel tekkinud probleemide käsitlemine
+	> Joonised R-is
 
-Lisaks praktikumidele sisaldab õppeaine järgnevaid komponente:
+12:00	Lõunapaus (Delta kohvikus)
+12:45	**Viies sessioon**
+	> Joonised R-is
+	> R Shiny
 
-* **Kodutööd:** Kokku antakse 5 kodutööd. 
-  * Kodutöö koosneb iseseisvalt lahendavatest ülesannetest praktikumis läbitud teemadel. Iga kodutöö tulemuseks on *.R fail koodi ning kommentaaridega või läbitud kodutöö-kursus [DataCamp](https://www.datacamp.com) keskkonnas.  
-  * Kodutööde esitamine käib läbi Moodle või [DataCamp](https://www.datacamp.com) keskkonna.
-* **Projekt:** Lisaks tuleb läbi viia üks praktiline projekt vabalt valitud andmestiku peal. Projektitöö eesmärgiks on näidata, kuivõrd on tudeng omandanud oskused kasutada R-i andmete töötlemiseks. Samuti oskust R-ga analüüside tulemusi vormistada (nt. joonised).
-  * Projekti võib teha kas üksinda või paaristööna. 
-  * Tulemusi on vaja esitleda suulisel kaitsmisel. 
-  * Projektid riputatakse pärast esitamist avalikult [projektid](https://Rkursus.github.io/sygis2019/projekt_juhend) lehele.
-* Iga projekti esitanud tudeng(id) saavad ühe kaastudengi(te) projekti retsenseerimiseks.
+14:15 Kohvipaus (Delta kohvikus)
+14:30 **Kuues sessioon**
+	> Jätkub: R Shiny
 
-Aine läbimiseks on vaja:
+16:00 Päeva kokkuvõte, kodutöö tutvustus
 
-1. kõikide kodutööde eest saada vähemalt 51% punktidest, 
-2. koostada projekt ning seda esitleda, 
-3. retsenseerida kaastudengi projekti.
+**Kodus** 
+II kodutöö (jooniste tegemine ja viimistlemine, R-i rakenduse koostamine)
 
-Õppeaines (3 EAP) ette nähtud 78 tundi tööd jaguneb järgnevalt:
 
-* praktikumid kokku 20 tundi (10 praktikumi, igaüks 2 akadeemilist tundi),
-* kodutööd kokku 20 tundi (5 kodutööd, igaüks 4 tundi),
-* iseseisev töö 10 tundi (10 praktikumi, igaüks 1 tund),
-* projekti koostamine 22 tundi,
-* projekti esitluse ettevalmistus ja esitamine 4 tundi,
-* kaastudengi projekti retsenseerimine 2 tundi.
+# Koolitaja
 
-<br/>
-
-# Tunniplaan
-
-Õppeaine toimub 2019/2020. õppeaasta sügissemestril. 
-
-* Praktikumid **teisipäeviti kell 14:15** ja **neljapäeviti kell 8:15** ruumis 203
-	* I rühm nädalatel 2 - 6
-	* II rühm nädalatel 8 - 12
-* **Projektide tähtaeg**:
-	* I rühm **neljapäeval 24. oktoober kell 12:00** (nädal 8).
-	* II rühm **neljapäeval 5. detsember kell 12:00** (nädal 14).
-* **Projektide ettekandmine**:
-	* I rühm **teisipäeval 5. november kell 14:15** (nädal 10).
-	* II rühm **teisipäeval 17. detsember kell 14:15** (nädal 16).
-
-<br/>
-
-# Kontakt ja küsimused
-
-* I rühm - Kaur Lumiste kaur.lumiste [at] ut.ee ja Liivi 2-519.
-* II rühm - Anne Selart anne.selart [at] ut.ee ja Liivi 2-519.
+![](https://media-exp1.licdn.com/dms/image/C4D03AQHhKgFpBRn0mg/profile-displayphoto-shrink_200_200/0?e=1603929600&v=beta&t=Sn2zJY4IJuR0-_tzuzD8HIjT8Ytw0uDC_y_ddN1QUOI)
+Kaur Lumiste kaur.lumiste [at] ut.ee ja TÜ Delta õppehoones kab. 4079.
