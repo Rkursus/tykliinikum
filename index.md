@@ -48,6 +48,7 @@ Koolituse läbinud osaleja:
 |16:00	|Päeva kokkuvõte, kodutöö tutvustus	|
 
 **Kodus**
+
 I kodutöö (andmestiku import, R-i abivahendite kasutamine, andmestikust esmase ülevaate koostamine, andmetüüpide muutmine, esmatasandil arvutamine)
 
 |		| Kolmapäev, 23. september  |
@@ -62,6 +63,7 @@ I kodutöö (andmestiku import, R-i abivahendite kasutamine, andmestikust esmase
 |16:00	|Päeva kokkuvõte, kodutöö tutvustus	|
 
 **Kodus** 
+
 II kodutöö (jooniste tegemine ja viimistlemine, R-i rakenduse koostamine)
 
 
