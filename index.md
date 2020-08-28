@@ -13,7 +13,7 @@ Tegemist on statistikute lemmiktarkvara R-i koolitusega, kus saame ülevaate R k
 
 ## Koolituse ülesehitus ja sisu
 
-Koolitusprogramm koosneb kahest õppepäevast ja koduülesannetest. Õppepäevad toimuvad 2. ja 23. septembril 10-16 TÜ Delta õppehoones aud. 2030. Vt. täpset ajakava all.
+Koolitusprogramm koosneb kahest õppepäevast ja koduülesannetest. Õppepäevad toimuvad **2. ja 23. septembril 10-16 TÜ Delta õppehoones aud. 2030**. Vt. täpset ajakava all.
 
 Teemadele läheneme praktiliselt, _hands-on_	 põhimõttega - käsitletav teema on kokkuvõtlikult esitatud koolituse materjalides, teemat saadavad praktilised näited, mis teeme läbi kõigile nähtaval ekraanil ja lahendame lühikesi ülesandeid. Lahendamisel tekkinud probleemid lahendame kohapeal ja koos. Edasiste oskuste arendamiseks saab kasutada [lisamaterjale](lisamaterjal) (enamasti küll ingliskeelsed).
 
@@ -37,11 +37,17 @@ Koolituse läbinud osaleja:
 
 Kolmapäev, 2. september
 -----
-9:45 	Kogunemine
-10:00 	Avasõnad, töökorralduse tutvustamine
-10:15 	**Esimene sessioon**
+
+| 9:45   | Kogunemine  |   |
+|10:00   | Avasõnad, sissejuhatus  |   |
+|10:15   | **Esimene sessioon** \n
 	> R ja RStudio tutvustamine
-	> Ülevaade statistikakeelest R
+	> Ülevaade statistikakeelest R  |   |
+
+
+
+	
+ 	
 	
 12:00 	Lõunapaus (Delta kohvikus)
 12:45	**Teine sessioon**
