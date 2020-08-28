@@ -5,8 +5,8 @@
 theme:            jekyll-theme-minimal
 
 # Setup
-title:            "Rakendustarkvara: R"
-tagline:          Koolitus
+title:            "Koolitus: Tarkvara R"
+tagline:          TÜ Kliinikumi statistikaosakond
 url:              http://rkursus.github.io/
 paginate:         1
 baseurl:          /tykliinikum
