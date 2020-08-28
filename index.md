@@ -35,20 +35,14 @@ Koolituse läbinud osaleja:
 
 # Ajakava ja sisu 
 
-Kolmapäev, 2. september
------
 
-| Aeg   | Sisu  |   |
-|---	| ---	|---|
-| 9:45   | Kogunemine  |   |
-|10:00   | Avasõnad, sissejuhatus  |   |
-
-
-
-
-10:15  **Esimene sessioon** 
-	> R ja RStudio tutvustamine
-	> Ülevaade statistikakeelest R 
+| Aeg   | Kolmapäev, 2. september  |
+|---:	| ---	|
+| 9:45  | Kogunemine  |
+|10:00  | Avasõnad, sissejuhatus  |
+|10:15  |**Esimene sessioon** 
+	* R ja RStudio tutvustamine
+	* Ülevaade statistikakeelest R |
 	
 12:00 	Lõunapaus (Delta kohvikus)
 12:45	**Teine sessioon**
