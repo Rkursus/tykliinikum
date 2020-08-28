@@ -40,9 +40,7 @@ Koolituse läbinud osaleja:
 |---:	| ---	|
 | 9:45  | Kogunemine  |
 |10:00  | Avasõnad, sissejuhatus  |
-|10:15  |**Esimene sessioon** 
-	* R ja RStudio tutvustamine
-	* Ülevaade statistikakeelest R |
+|10:15  |**Esimene sessioon** <br> * R ja RStudio tutvustamine <br>	* Ülevaade statistikakeelest R |
 	
 12:00 	Lõunapaus (Delta kohvikus)
 12:45	**Teine sessioon**
