@@ -61,5 +61,5 @@ II kodutöö (jooniste tegemine ja viimistlemine, R-i rakenduse koostamine)
 
 # Koolitaja
 
-![](pic.jpg =200x)
+![](pic.jpg)
 Kaur Lumiste kaur.lumiste [at] ut.ee ja TÜ Delta õppehoones kab. 4079.
