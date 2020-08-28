@@ -36,44 +36,30 @@ Koolituse läbinud osaleja:
 # Ajakava ja sisu 
 
 
-| Aeg   | Kolmapäev, 2. september  |
+|		| Kolmapäev, 2. september  |
 |---:	| ---	|
 | 9:45  | Kogunemine  |
 |10:00  | Avasõnad, sissejuhatus  |
 |10:15  |**Esimene sessioon** <br> * R ja RStudio tutvustamine <br>	* Ülevaade statistikakeelest R |
-	
-12:00 	Lõunapaus (Delta kohvikus)
-12:45	**Teine sessioon**
-	> Töötamine erinevate andmetüüpidega
-	> Andmete importimine ja eksportimine
-	
-14:15	Kohvipaus (Delta kohvikus)
-14:30	**Kolmas sessioon**
-	> Andmestiku teisendused
-	
-16:00	Päeva kokkuvõte, kodutöö tutvustus
+|12:00 	|Lõunapaus (Delta kohvikus)	|
+|12:45	|**Teine sessioon** <br> * Töötamine erinevate andmetüüpidega <br> * Andmete importimine ja eksportimine	|
+|14:15	|Kohvipaus (Delta kohvikus)	|
+|14:30	|**Kolmas sessioon** <br> * Andmestiku teisendused |
+|16:00	|Päeva kokkuvõte, kodutöö tutvustus	|
 
 **Kodus**
 I kodutöö (andmestiku import, R-i abivahendite kasutamine, andmestikust esmase ülevaate koostamine, andmetüüpide muutmine, esmatasandil arvutamine)
 
-
-Kolmapäev, 23. september
------
-09:45	Kogunemine
-10:00	**Neljas sessioon**
-	> Eelmiste teemade kordamine, kodutöödel tekkinud probleemide käsitlemine
-	> Joonised R-is
-
-12:00	Lõunapaus (Delta kohvikus)
-12:45	**Viies sessioon**
-	> Joonised R-is
-	> R Shiny
-
-14:15 Kohvipaus (Delta kohvikus)
-14:30 **Kuues sessioon**
-	> Jätkub: R Shiny
-
-16:00 Päeva kokkuvõte, kodutöö tutvustus
+|		| Kolmapäev, 23. september  |
+|---:	| ---	|
+| 9:45  | Kogunemine  |
+|10:00  | Avasõnad, sissejuhatus  |
+|10:15  |**Neljas sessioon** <br> * Eelmiste teemade kordamine, kodutöödel tekkinud probleemide käsitlemine <br>	* Joonised R-is |
+|12:00 	|Lõunapaus (Delta kohvikus)	|
+|12:45	|**Viies sessioon** <br> * Joonised R-is <br> * R Shiny |
+|14:15	|Kohvipaus (Delta kohvikus)	|
+|14:30	|**Kuues sessioon** <br> * Jätkub: R Shiny |
+|16:00	|Päeva kokkuvõte, kodutöö tutvustus	|
 
 **Kodus** 
 II kodutöö (jooniste tegemine ja viimistlemine, R-i rakenduse koostamine)
