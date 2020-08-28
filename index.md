@@ -59,7 +59,7 @@ I kodutöö (andmestiku import, R-i abivahendite kasutamine, andmestikust esmase
 II kodutöö (jooniste tegemine ja viimistlemine, R-i rakenduse koostamine)
 
 
-# Koolitaja
+## Koolitaja
 
 ![](pic.jpg)
 Kaur Lumiste kaur.lumiste [at] ut.ee ja TÜ Delta õppehoones kab. 4079.
