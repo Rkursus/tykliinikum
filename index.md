@@ -11,7 +11,7 @@ layout: frontpage
 
 Tegemist on statistikute lemmiktarkvara R-i koolitusega, kus saame ülevaate R keele peamistest konstruktsioonidest ja andmetüüpidest, andmetöötlusvõimalustest, hõlpsast jooniste tegemisest paketi `ggplot2` vahenditega ja kiikame R Shiny interaktiivseid raporteid.
 
-## Koolituse ülesehitus ja sisu
+## Koolituse ülesehitus
 
 Koolitusprogramm koosneb kahest õppepäevast ja koduülesannetest. Õppepäevad toimuvad **2. ja 23. septembril 10-16 TÜ Delta õppehoones aud. 2030**. Vt. täpset ajakava all.
 
@@ -26,15 +26,7 @@ Koolituse läbinud osaleja:
 * koostada algelise interaktiivse raporti.
 
 
-## Koolituse eesmärgid
-
-* Tutvustada osalejatele tarkvara R, anda ülevaade R-i võimalustest ja peamistest vigadest mida kiputakse tegema.
-* Õppida R-i funktsioone andmetest ülevaate saamiseks, andmete töötlemiseks ja visualiseerimiseks.
-* Tutvustada tarkvara R võimalusi esmase visuaalse analüüsi läbiviimiseks (sh. interaktiivse raporti abil).
-
-
-# Ajakava ja sisu 
-
+## Ajakava ja sisu 
 
 |		| Kolmapäev, 2. september  |
 |---:	| ---	|
