@@ -1,8 +1,5 @@
 ---
-title: | 
-  | Rakendustarkvara: R 
-  | 1. praktikum^[Praktikumijuhendid põhinevad aine MTMS.01.092 Rakendustarkvara: R (2 EAP) materjalidel, mille autorid on Mait Raag ning Raivo Kolde]
-  
+title: "Rakendustarkvara: R"
 output: 
   html_document:
     theme: null
@@ -22,46 +19,20 @@ hook2 <- function(x){ gsub("```\n+```\n", "", x) }
 
 # Lühike sissejuhatus
 
-R on programmeerimiskeel ja -keskkond, mis on arendatud statistiliseks andmetöötluseks. R-i kasutavate inimeste hulk on viimase kümmekonna aasta jooksul oluliselt kasvanud nii ülikoolides kui ka ettevõtetes^[http://r4stats.com/articles/popularity/]. Eelkõige on populaarsuse põhjus vaba ligipääs, lai valik lisapakette ja kvaliteetsete jooniste tegemise võimalus. 
+R on programmeerimiskeel ja -keskkond, mis on arendatud statistiliseks andmetöötluseks aga tänapäeval saab sellega teha palju muudki. Mõned põhjused, miks R on niivõrd paljuräägitud teema:
+
+* R-i kasutajaskond on viimase kümmekonna aasta jooksul [oluliselt kasvanud](r4stats.com/articles/popularity/) ülikoolides ja ettevõtetes,
+* [R on vabavara](https://cran.r-project.org/),
+* R-ga käib kaasas [lai valik lisapakette](https://cran.r-project.org/web/packages/available_packages_by_name.html),
+* R võimaldab tänapäeval juba [palju enamat](https://www.google.com/search?q=r+possibilities) kui ainult andmetöötlus,
+* R on ühildatav pea kõigi tuntumate andmetöötlusprogrammidega (nt. MS Excel, Tableau, SPSS, Qlik, Power BI, ...)
+* ...
 
 R-i kodulehelt saab vajaliku tarkvara alla laadida: http://www.r-project.org/
 
 ## Kasutajaliides
-Ava Start-menüü ja otsi programm nimega R, käivita see.
 
-Programmil R on äärmiselt minimalistlik kasutajaliides. Programmi käivitades on näha ainult konsooliaken. Rea ees olev märk `>` näitab, et R ootab uut käsku. Käsud saab kirjutada sümboli `>` järele, sealjuures võib üks käsk paikneda mitmel järjestikusel real. Kui R-i arvates on käsu sisestamine pooleli, on konsoolirea alguses sümbol `+`, sel juhul võib käsu sisestamist uuest reast jätkata. Kui aga reavahetus on lisatud ekslikult, näiteks on koodis näha viga just eelnevas reas (mida pärast reavahetuse lisamist enam redigeerida ei saa) saab uue tühja käsurea tekitada vajutades `Esc` klahvi. 
-
-Kui käsk on sisestatud, siis `enter`-klahvi vajutamise järel käsk täidetakse  ja tulemus trükitakse konsooliaknasse. Sageli on siis rea alguses kantsulgudes mingi arv, mis näitab, mitmes tulemuse element on rea alguses -- nimelt võib tulemus mõnikord koosneda mitmest elemendist.
-```{r,prompt=TRUE,comment=NA}
-4 * 6
-```
-```{r,prompt=TRUE,comment=NA}
-4 * 
-6
-```
-```{r,prompt=TRUE,comment=NA}
-4 * (1:40)
-
-```
-\
-
-Kui konsooliaknas olles vajutada üles- või allanooleklahvi, saab sirvida eelnevalt täidetud käske.
-
-Konsooli käskude sisestamise asemel on neid mõistlik kirjutada skriptifaili, et hiljem (nt järgmisel päeval) saaks tehtud tööd (näiteks mingi analüüsi) kiiresti jätkata või uuesti teha kui on lisandunud uued andmed. Skriptifaili tekitamiseks R-is tuleks valida menüüst `File` valik `New script`. Avatakse skriptiaken, kuhu saab käske kirjutada. Kui skriptiaknas olles vajutada klahve `Ctrl+R`, siis vastaval real olev käsk saadetakse R-ile täitmiseks. Kui käsk on kirjutatud mitmel real või on soov mitut käsku järjest jooksutada, võib vastavad read skriptiaknas hiirega ära märkida ning seejärel `Ctrl+R` vajutada. Valides menüüst `File` valiku `Save`, salvestatakse `.R` lõpuga skriptifail kasutaja poolt määratud asukohta.\medskip\medskip
-
-
-
-\pagebreak
-Sriptiaknas on mõislik käskudele lisada kommentaare, et teinekord või teisel inimesel oleks koodi lihtsam lugeda. **Kommentaare** saab R-i koodis lisada ainult rea lõppu, kasutades trellide-sümbolit:
-```{r,eval=TRUE}
-log(5.9)  # võtame naturaallogaritmi arvust 5,9
-# terve see rida on kommentaar, sest rea alguses on # ehk trellide sümbol
-```
-
-Pane tähele, et **kümnendmurru eraldamiseks** kasutatakse R-is punkti, mitte koma.
-
-
-Kahjuks on R-i kasutajaliides mõnevõrra ebamugav. Näiteks konsooliaknas ei saa hiirega kursori asukohta muuta. Samuti on kogu tekst sama värvi (koodi värvimine puudub). Üks alternatiivne kasutajaliides R-i kasutamiseks on **RStudio**^[http://www.rstudio.com/], kus neid puuduseid pole ning millega on natuke hõlpsam koodi kirjutada. Praktikumides hakkamegi edaspidi kasutama programmi RStudio.
+Kuna R on tegelikkuses programmeerimiskeel, siis R-il endal on äärmiselt minimalistlik kasutajaliides. Üks alternatiivne kasutajaliides R-i kasutamiseks on **RStudio**^[http://www.rstudio.com/], kus koodi kirjutamine on mitmel viisil hõlpsam. Koolitusel hakkamegi edaspidi kasutama programmi RStudio.
 
 Ava Start-menüü ja otsi programm nimega RStudio, käivita see.
 
@@ -76,12 +47,35 @@ Ava Start-menüü ja otsi programm nimega RStudio, käivita see.
     - käsufaili ühel real peab olema kirjutatud üks käsk (reavahetus näitab programmile käsu lõppu), kui soovid ühele reale kirjutada mitu käsku, siis need tuleb eraldada semikooloniga `;`
     - kommentaari lisamiseks tuleb vastava rea algusess lisada `#`-märk;
     - mingi koodilõigu käivitamiseks tuleb see hiirega ära valida ning vajutada klahvikombinatsiooni `Ctrl+Enter`.
+    - kui reavahetus on lisatud ekslikult (näiteks on koodis näha viga just eelnevas reas) saab uue tühja käsurea tekitada vajutades `Esc` klahvi. 
+
+Kui käsk on sisestatud, siis `enter`-klahvi vajutamise järel käsk täidetakse  ja tulemus trükitakse konsooliaknasse. Sageli on siis rea alguses kantsulgudes mingi arv, mis näitab, mitmes tulemuse element on rea alguses -- nimelt võib tulemus mõnikord koosneda mitmest elemendist.
+```{r,prompt=TRUE,comment=NA}
+4 * 6
+```
+```{r,prompt=TRUE,comment=NA}
+4 * 
+6
+```
+```{r,prompt=TRUE,comment=NA}
+4 * (1:40)
+
+```
+
+Konsooli käskude sisestamise asemel on neid mõistlik kirjutada skriptifaili, et hiljem (nt järgmisel päeval) saaks tehtud tööd (näiteks mingi analüüsi) kiiresti jätkata või uuesti teha kui on lisandunud uued andmed. Skriptifaili tekitamiseks RStudios tuleks valida menüüst `File` valik `New File` ja `R script`. Avatakse skriptiaken, kuhu saab käske kirjutada. Kui skriptiaknas olles vajutada klahve `Ctrl+Enter`, siis vastaval real olev käsk saadetakse R-ile täitmiseks. Kui käsk on kirjutatud mitmel real või on soov mitut käsku järjest jooksutada, võib vastavad read skriptiaknas hiirega ära märkida ning seejärel `Ctrl+Enter` vajutada. Valides menüüst `File` valiku `Save`, salvestatakse `.R` lõpuga skriptifail kasutaja poolt määratud asukohta.\medskip\medskip
 
 
+Sriptiaknas on mõislik käskudele lisada kommentaare, et teinekord või teisel inimesel oleks koodi lihtsam lugeda. **Kommentaare** saab R-i koodis lisada ainult rea lõppu, kasutades trellide-sümbolit:
+```{r,eval=TRUE}
+log(5.9)  # võtame naturaallogaritmi arvust 5,9
+# terve see rida on kommentaar, sest rea alguses on # ehk trellide sümbol
+```
 
+Pane tähele, et **kümnendmurru eraldamiseks** kasutatakse R-is punkti, mitte koma.
 
 
 ## Lihtsam aritmeetika
+
 R-is on võimalik teha kõiki lihtsamaid aritmeetilisi tehteid, sealjuures järgitakse matemaatikas kasutatavat tehete järjekorda (sulgusid lisades on võimalik seda muuta): 
 
 - `1 + (2 - 3) * 4 / 5`
@@ -94,7 +88,7 @@ R-is on võimalik teha kõiki lihtsamaid aritmeetilisi tehteid, sealjuures järg
 
 ### Ülesanded
 
-1. Arvuta enda kehamassiindeks: kaal (kg) / pikkus^2^ (m^2^). (Õppejõule ei pea näitama.)
+1. Arvuta enda kehamassiindeks: kaal (kg) / pikkus^2^ (m^2^). (Koolitajale ei pea näitama.)
 
 \
 \
@@ -172,16 +166,14 @@ kaal / (pikkus / 100)**2
 Siit maksab tähele panna ka seda, et muutujale uut väärtust omistades kirjutatakse vana lihtsalt üle, mingit hoiatust R ei anna.
 
 
-Töökeskkonnas olevatest objektidest saab ülevaate käsuga `ls()`. Töökeskkonnas olevaid objekte saab kustutada käsuga `rm(.)` (sulgudes olev punkt asendada sobivate argumentidega):
+Töökeskkonnas olevatest objektidest saab ülevaate RStudios paremal üleval aknast `Environment` või konsoolis käsuga `ls()`. Töökeskkonnas olevaid objekte saab kustutada  käsuga `rm(.)` (sulgudes olev punkt asendada sobivate argumentidega):
 ```{r, results='hide'}
 rm(kaal, pikkus)
 ls() #kontrolli, kas objektid kustutati töölaualt
 ```
-Lisaks skriptifailile on võimalik ka töökeskkonda salvestada ning hiljem see uuesti sisse laadida. Selleks peab R-is konsooliakna aktiivseks tegema ja valima menüüst `File` vastavalt `Save workspace` või `Load workspace`. RStudios leiab need toimingud aga menüüst `Session`. Käsurealt on töökeskkonda võimalik salvestada RData failiks  käsuga `save.image()`. 
+Lisaks skriptifailile on võimalik ka töökeskkonda salvestada ning hiljem see uuesti sisse laadida. Selleks peab RStudios konsooliakna aktiivseks tegema ja valima menüüst `File` vastavalt `Save workspace` või `Load workspace`. RStudios leiab need toimingud aga menüüst `Session`. Käsurealt on töökeskkonda võimalik salvestada RData failiks  käsuga `save.image()`. 
 
 Töökeskkonna salvestamisel salvestatakse kõik antud töökeskkonnas olnud objektid RData-faili. Hiljem saab kõik need objektid jälle RData failist töökeskkonda laadida käsuga `load(".RData")`. RData formaati üldiselt teised statistikaprogrammid lugeda ei oska. Kui salvestatud on käskude ehk skripitfail (laiendiga .R), siis objektide eraldi salvestamine pole enamasti vajalik.
-
- 
 
 
 ## Vektorid. Tehted vektoritega
@@ -204,9 +196,6 @@ seq(from=0, to=11, by=2) #arvud 0, 0+2, 0+2+2, ..., kuni jõutakse väärtuseni 
 seq(0, 1, 0.1) # saab ka komaga arvudest järjendeid teha
 seq(0, 1, length.out=4)  
 rep(x=c(1, 3), times=2)  # vektorit korratakse 2 korda
-```
-\pagebreak
-```{r}
 rep(x=c(1, 3), each=2)   # vektori iga elementi korratakse 2 korda
 ```
 

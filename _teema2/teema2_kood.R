@@ -1,5 +1,5 @@
 # --- Rakendustarkvara R
-# --- II praktikum ----
+# --- II teema ----
 
 
 # --- 1. Väärtuste tüübid ----
@@ -128,10 +128,10 @@ setwd("C:\\Users\\mina\\Rkursus\\")
 setwd("C:/Users/mina/Rkursus/")
 
 # RStudios saab töökataloogi ka automaatselt seada käesoleva skripti asukoha järgi
-# vt. faili "RStudio snipetid"   
+# vt. faili "RStudio snipetid" - https://github.com/Rkursus/tykliinikum/raw/master/RStudio_snippetid.txt
 
 # Näide andmete sisselugemisest
-näide1 <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/esimene.txt",
+näide1 <- read.table("https://github.com/Rkursus/tykliinikum/raw/master/data/esimene.txt",
                      header = T, sep = "\t", dec = ",")
 
 # Tulemused saab kirjutada faili käsuga write.table()
@@ -146,15 +146,13 @@ write.table(näide1, "failinimi.txt", sep = "\t")
 
 
 # 2. 
-tab1 <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/____", ____)
+tab1 <- read.table("https://github.com/Rkursus/tykliinikum/raw/master/data/____", ____)
 
-tab2 <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/____", ____)
+tab2 <- read.table("https://github.com/Rkursus/tykliinikum/raw/master/data/____", ____)
 
-tab3 <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/____", ____)
+tab3 <- read.table("https://github.com/Rkursus/tykliinikum/raw/master/data/____", ____)
 
-tab4 <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/____", ____)
-
-tab1;tab2;tab3;tab4
+tab1;tab2;tab3
 
  
 
@@ -179,9 +177,13 @@ library(readxl)
 
 # --- 2.3 Andmete import programmide MS Excel, SAS, Stata, SPSS failidest ----
 
+# Kasutades RStudio võimalusi....
+
+
+
 # --- 2.3.1 MS Excel failid (.xls, .xlsx) ----
 
-# salvesta MS Exceli fail "tudengite-arv.xlsx" aadressilt https://github.com/Rkursus/sygis2019/tree/master/data oma töökausta
+# salvesta MS Exceli fail "tudengite-arv.xlsx" aadressilt https://github.com/Rkursus/tykliinikum/tree/master/data oma töökausta
 
 list.files()   # vaata, mis nimega failid on töökaustas
 excel_sheets("tudengite-arv.xlsx")   # töölehtede nimed MS Exceli failis
@@ -193,35 +195,6 @@ str(AY)  # vaata tulemust
 # MS Exceli andmetabel ei pruugi alata kohe esimesest tabelireast (argument 'skip'):
 tabel <- read_excel("tudengite-arv.xlsx", sheet = "tabel", skip = 2)
 str(tabel)
-
-
-
-
-# ---  2.4 SAS, SPSS, Stata failide imoport ----
-
-# salvesta aadressilt https://github.com/Rkursus/sygis2019/tree/master/data oma töökausta failid:
-# "effort.sas7bdat"  - SAS andmefail
-# "effort.dta" - Stata fail
-# "effort.sav" - SPSS fail  
-
-
-# vajaliku lisapaketi aktiveerimine
-library(haven)
-
-# andmestike import
-andmestik_SAS <- read_sas("effort.sas7bdat")
-andmestik_Stata <-  read_stata("effort.dta")
-andmestik_SPSS <- read_spss("effort.sav")
-
-# imporditud andmestike ülevaatamine
-str(andmestik_SAS)
-str(andmestik_Stata)
-str(andmestik_SPSS)
-
-# nii SAS, SPSS kui ka Stata andmestikes saab tunnusenimedele lisada nn silte(ik label), 
-# need on näha kui avada andmestikud RStudio tabelivaates, näiteks
-View(andmestik_SAS)
-
 
 # NB!
 # antud paketis on olemas ka käsud R-i andmetabelite ekspordiks SAS, SPSS, Stata andmefailiks

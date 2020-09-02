@@ -1,12 +1,12 @@
 # --- Rakendustarkvara R
-# --- III praktikum ----
+# --- III teema ----
 
 
 
 # --- 1. Toimingud andmestikuga ----
 
 # Andmestik
-andmed <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt",
+andmed <- read.table("https://github.com/Rkursus/tykliinikum/raw/master/data/mass.txt",
                      header = T, sep = "\t")
 str(andmed)
 head(andmed)
@@ -86,7 +86,7 @@ summary(osa)
 
 # --- 1.3 Lihtsam kirjeldav statistika ----
 
-# vt. loetelu praktikumi materjalidest
+# vt. loetelu materjalidest
 
 # Sagedustabeli saab käsu table() abil:
 sagedustabel <- table(andmed$SEX, andmed$LANX)

@@ -1,9 +1,9 @@
-# --------- I praktikum ---------
+# --------- I teema ---------
 
 
 # --- 1. Sissejuhatus ----
 
-# Palun loe praktikumimaterjalide tekst läbi.
+# Palun loe materjalide tekst läbi.
 # Seadistame RStudio-t:
 ## Pane paika kodeerimine (ingl. k. encoding), et RStudio ka täpitähte (õäöü) tunnistaks.
 ## Tools -> Global Options -> Code -> Savings -> Default text encoding (vali "UTF-8" kui seal on midagi muud)

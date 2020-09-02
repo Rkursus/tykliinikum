@@ -1,12 +1,12 @@
 # --- Rakendustarkvara R
-# --- IV praktikum ----
+# --- IV teema ----
 
 
 
 # --- 1. Toimingud andmestikuga - jätk ----
 
 # Andmestik
-mk <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/maakonnad.txt", sep = " ", header = TRUE)
+mk <- read.table("https://github.com/Rkursus/tykliinikum/raw/master/data/maakonnad.txt", sep = " ", header = TRUE)
 
 
 
@@ -55,82 +55,88 @@ tulemused
 # Mis oli erinev?
 
 
+# --- 2. Andmetöötlus paketiga dplyr ----
 
-# --- 1.2 Sorteerimine ----
+#install.packages(dplyr) # vajadusel installeerida pakett
+library(dplyr)
 
-# Katseta
-x <- c(8, 1, NA, 7, 7)
-order(x)
+#--- 2.1 Paketi dplyr käskude kasutamine ----
 
-sort(x, na.last = TRUE)
-
-x[order(x)]
-
-kokku[order(kokku$vanus, kokku$tulemus, decreasing = TRUE), ]
-
-# --- ÜL 1.2.1 ----
-# 1. Loe sisse andmestikud ja tutvu nendega:
-link <- "https://github.com/Rkursus/sygis2019/raw/master/data/"
-visiidid <- read.table(paste0(link, "visiidid.txt"), sep = "\t", header = TRUE)
-inimesed <- read.table(paste0(link, "isikud.txt"), sep = "\t", header = TRUE)
-dim(visiidid)
-str(visiidid)
-
-dim(inimesed)
-str(inimesed)
+# Andmestik
+mass <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt", sep = "\t", header = T)
 
 
-# 2. Järjesta visiitide andmestik kasvavalt isikukoodi ja arstivisiidi kuupäeva järgi.
-sort_visiidid <- visiidid[_____,_____]
+# Käsk 'mutate()': arvutame kaks uut tunnust, kustutame ühe vana
+mass1 <- mutate(mass,
+                kuus = WAGP/12,
+                kuus_euro = kuus * 0.8,
+                MIG = NULL)
 
-# 3. Ühenda andmestikud, ühendatud andmestik peab sisaldama kõik inimesed mõlemast andmestikust. 
-# Mitu vaatlust on ühendatud andmestikus? Mis tunnuste osas esineb puuduvaid väärtusi?
+# Käsk 'filter()': rakendame filtrit (ekraanile paari esimese veeru väärtused neil vaatlustel)
+filter(mass, AGEP > 70, WAGP > 100000)[,1:3]
 
-yhendatud <- merge(visiidid, inimesed, ______)
-dim(yhendatud)
-summary(yhendatud)
+# Käsk 'select()': rakendame filtrit ja selekteerime tunnuseid
+select(filter(mass, AGEP > 70, WAGP > 100000), contains("G"))
 
-
-
-# --- 1.3 Unikaalsed ja mitmekordsed elemendid. Hulgatehted. ----
-
-# Vaatame andmestikku 'kokku', andmestike ühendamise alapunktist
-kokku$nimi
-
-unique(kokku$nimi) # unikaalsed nimed
-
-duplicated(kokku$nimi) # mitmes element nimede vektoris on dubleeriv
-
-duplicated(kokku) # mitmes rida andmestikus on dubleeriv (sellist pole!)
-
-# Hulgatehted
-x <- c(1:5, 1:5)
-y <- 3:7
-
-union(x, y)
-intersect(x, y)
-setdiff(x, y)
+# Käsud 'summarise()' ja 'group_by()':
+summarise(group_by(mass, CIT),
+          keskpalk = mean(WAGP, na.rm = T),
+          n = n(),
+          notNA = sum(!is.na(WAGP)))
 
 
-# --- ÜL 1.3.1 ----
-# 1 Mitu objekti on andmestikus 'mktopelt' korduvad? 
+# Käsk 'arrange()': andmestike sorteerimine
+osa <- filter(select(mass, id, SEX, AGEP, WKHP, WAGP), WAGP > 300000, AGEP < 55)
+arrange(osa, SEX, desc(AGEP), WKHP)
+
+
+# Toruoperaator (piping) '%>%': 
+mass %>%
+  group_by(SEX, MAR) %>%
+  summarise(keskpalk = mean(WAGP, na.rm = T), n = n()) %>%
+  head()
+
+# versus samad operatsioonid ilma toru operaatorita
+head(summarise(group_by(mass, SEX, MAR), keskpalk = mean(WAGP, na.rm = T), n = n()))
+
+# Kumba varianti on lihtsam lugeda?
 
 
 
-# Kas mõni maakond on rohkem kui 2 korda korratud? Millised?
+# --- ÜL 2.1.1 ----
+
+# 1
+
+# variant A, aheldamist kasutades
+mass %>% 
+  filter(______) %>% 
+  mutate(vanusgrupp = ______) %>%
+  group_by(______) %>%
+  summarise(kesk = ______, 
+            max = ______,
+            "gruppide maht" = ______,
+            "pole NA" = ______)
+
+
+# variant B, aheldamiseta
+tabel <- 
+  summarise(group_by(mutate(filter(______,______), 
+                            vanusgrupp = ______,
+                            kesk = ______, 
+                            max = ______,
+                            "gruppide maht" = ______,
+                            "pole NA" = ______)))
+
+tabel
+
+# Kumba varianti on lihtsam koostada? Kumba hiljem lugeda?
 
 
 
-# 2 Kas arsti mitte külastanud isikute osakaal (protsentuaalselt) on suurem meeste või naiste hulgas?
 
+#--- 3. Pikk ja lai andmetabel ----
 
-
-
-
-
-#--- 2. Pikk ja lai andmetabel ----
-
-# --- 2.1 Pikk ja lai andmetabel. Pakett reshape2 ----
+# --- 3.1 Pikk ja lai andmetabel. Pakett reshape2 ----
 
 #install.packages("reshape2") # kui arvutis pole paketti reshape2, siis esmalt installida
 library(reshape2)
@@ -152,10 +158,10 @@ dcast(m, nimi ~ . , fun.aggregate = mean, na.rm = TRUE, value.var = "value")
 
 
 
-# --- ÜL 2.1.1 ----
+# --- ÜL 3.1.1 ----
 
 # 1 
-link <- "https://github.com/Rkursus/sygis2019/raw/master/data/"
+link <- "https://github.com/Rkursus/tykliinikum/raw/master/data/"
 valik <- read.table(paste0(link, "valik.txt"), sep = "\t", header = TRUE)
 head(valik)
 
@@ -177,73 +183,5 @@ dcast(abi, _______)
 
 
 # 2. igale inimesele keskmine VR ja CRV
-visiidid <- read.table(paste0(link, "visiidid.txt"), sep = "\t", header = TRUE)
-head(visiidid)
-
-abi <- melt(visiidid, ______)
-head(abi)
-
-
-tabel1 <- dcast(abi, _______,
-                fun.aggregate = _____,  
-                value.var = _______)
-head(tabel1)
-
-
-
-# --- 3. Veel andmestruktuure ----
-
-
-# Maatriksi tekitamine
-(m <- matrix(1:12, nrow = 3, byrow = F))
-
-# Teine variant
-cbind(1:3, 5:7, 11:13)
-
-# Maatriksist andmete saamine
-m[1:2, 2:3]
-
-
-# 'List' näited
-(minulist <- list(esimene = "üksainus sõne", matrix(1:12, 3), funktsioon = min))
-
-# elementide valik listist
-minulist$esimene
-minulist[[2]]
-
-# elementide lisamine listi
-minulist$neljas <- c(5, 7) # lisame uue elemendi
-minulist[[5]] <- letters[1:10] # lisame veel ühe uue elemendi
-# muudetud listi struktuuri vaatamine
-str(minulist)
-
-
-
-# Andmetabel (data.frame)
-df <- data.frame(esimene = 1:5,
-                 "2. veerg" = 11:15,
-                 nimed = c("Peeter", "Mari", "Kaur", NA, "Tiiu"))
-
-class(df)
-is.list(df)
-
-
-# --- ÜL 3.0.1 ----
-#1 Tekita list:
-sõnad <- list(
-  a = c("aabits", "aade", "aadel", "aader", "aadlik"),
-  b = c("baar", "baas", "baat"),
-  c = c("c-vitamiin", "ca", "circa", "cafe"))
-
-#2 Eralda listist teine element, kasutades elemendi nime.
-
-
-
-#3 Eralda listist teine element, kasutades elemendi indeksit.
-
-
-
-#4 Eralda listist esimese elemendi kolmas element.
-
 
 

@@ -1,8 +1,5 @@
 ---
-title: | 
-  | Rakendustarkvara: R 
-  | 3. praktikum^[Praktikumijuhendid põhinevad aine MTMS.01.092 Rakendustarkvara: R (2 EAP) materjalidel, mille autorid on Mait Raag ning Raivo Kolde]
-  
+title: "Rakendustarkvara: R"
 output: 
   html_document:
     theme: null
@@ -10,8 +7,6 @@ output:
 ---
 
  
-<!-- 2017, 2018: ggplot2 näide välja võetus, sest see tuleb tagapool -->
-
 
 ```{r,echo=FALSE, warning=FALSE}
 load("../data/andmed.RData")
@@ -21,14 +16,11 @@ library(ggplot2)
 
 # Toimingud andmestikuga
 
-Impordime uuesti andmestiku, mida korra kasutasime ka eelmises praktikumis (Massachusettsi andmestik), ja vaatame andmestikust ülevaadet
+Impordime uuesti andmestiku, mida korra kasutasime ka eelmise teema all (Massachusettsi andmestik), ja vaatame andmestikust ülevaadet
 ```{r, results='hide'}
-andmed <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt", header = T, sep = "\t")
+andmed <- read.table("https://github.com/Rkursus/tykliinikum/raw/master/data/mass.txt", header = T, sep = "\t")
 str(andmed)
 ```
-
-
-
 
 
 ## Veergude ja ridade eraldamine andmestikust: indeksi ja nime järgi
@@ -60,16 +52,11 @@ Tihti on veeruindeksite asemel mugavam kasutada veergude nimesid (peavad olema j
 andmed[, c("AGEP", "WAGP")]  # eraldame veerud "AGEP" ja "WAGP"
 ```
 
-Kui andmestikus on ka ridadel nimed, siis saab neid sama moodi kasutada ridade eraldamisel. Selle läbiproovimiseks lisame oma andmestikule praegu ise reanimed:
-```{r,eval=FALSE}
-rownames(andmed) <- paste("rida", rownames(andmed), sep = "-") # paneme ise nimed kujul 'rida-jrk'
-head(andmed[, 5:9])  # vaatame milline on tulemus
-andmed[c("rida-23", "rida-62"), 5:9]  # eraldame read 23 ja 62  
-```
-
 
 ### Uue tunnuse lisamine
+
 Uue tunnuse lisamiseks andmestikku tuleb valida tunnuse nimi, mida andmestikus veel ei esine, ja omistada uuele andmeveerule valitud väärtused. Lisame oma andmestikku näiteks keskmise kuusissetuleku veeru, mis on arvutatud olemasoleva 12 kuu sissetuleku tunnuse `WAGP` abil. Uus tunnus lisatakse viimaseks veeruks andmestikus:
+
 ```{r,eval=FALSE}
 andmed$kuusissetulek <- andmed$WAGP/12
 # või
@@ -80,7 +67,9 @@ str(andmed)
 
 
 ## Veergude ja ridade eraldamine andmestikust: tõeväärtusvektori abil
+
 Tõeväärtusvektoreid on väga mugav kasutada nn filtritena. Nimelt on `data.frame` puhul võimalik ridu (ja ka veerge!) eraldada mitte ainult indeksi või -nime järgi, vaid ka tõeväärtusvektori abil. Kui eraldada ridu, siis vastav tõeväärtusvektor peab olema sama pikk kui on andmestikus ridu ning  väärtused selles vektoris näitavad, kas vastavat rida kasutada (`TRUE`) või mitte (`FALSE`). Tõeväärtusvektorite kombineerimisel saab andmestikust väga spetsiifilisi alamhulki eraldada.
+
 ```{r}
 # eraldame kõik read, kus SEX == "Male" ning salvestame selle uueks objektiks
 mehed <- andmed[andmed$SEX == "Male", ]  
@@ -103,9 +92,10 @@ str(abielu)
 
 
 ### Ülesanded (Massachusettsi andmestik)
+
 1. Selekteeri andmestikust iga 5. rida ja salvesta see alamandmestik uue nimega `valik5`. Mitu vaatlust on selles andmestikus?
 
-1. Moodusta alamandmestik, kuhu kuuluvad uuritavad, kelle kohta pole teada, kas nad on viimase aasta jooksul elukohta vahetanud. Kes sellesse andmestikku kuuluvad?
+1. Moodusta alamandmestik, kuhu kuuluvad uuritavad, kelle kohta pole teada, kas nad on viimase aasta jooksul elukohta vahetanud (tunnus `MIG`). Kes sellesse andmestikku kuuluvad?
 
 ```{r, eval=FALSE, include=FALSE}
 valik5 <- andmed[seq(1, nrow(andmed), 5), ]
@@ -120,6 +110,7 @@ str(vastamata_kolimine)
 
 
 ## Lihtsam kirjeldav statistika
+
 Allpool on loetletud mõned käsud, mille abil mõnd konkreetset tunnust (veergu andmestikust) kirjeldada.
 
 * `min(tunnus)`, `max(tunnus)`, `median(tunnus)`, `mean(tunnus)`, `sd(tunnus)` -- arvulise tunnuse karakteristikud
@@ -153,7 +144,6 @@ prop.table(sagedustabel, margin = 2)  # iga veerg kokku 1 (ehk 100%)
 1. Mitu üle 74 aasta vanust doktorikraadiga naist on  andmestikus?
 1. Mitmel inimesel on bakalaureuse-, magistri- või doktorikraad?
 1. Milline on keskmine aastapalk meestel, milline naistel?
-<!--1. Kui suur osa (protsentides) ilma kõrghariduseta inimestest saab suuremat aastapalka kui keskmine palk? -->
 1. Kas Massachusettsi andmete alamandmestikus `valik5`(tekitatud eelmises ülesanneteplokis) on meeste ja naiste keskmised aastapalgad samasugused kui kogu andmestikus?
 
 ```{r, eval=FALSE, include=FALSE}
@@ -263,7 +253,6 @@ levels(andmed$CIT)  # vaatame mis väärtused esinevad
 mittekodanikud <-andmed[andmed$CIT == "Not a citizen of the U.S.", ]
 prop.table(table(mittekodanikud$SEX, mittekodanikud$vanusgrupp), 1)
 
- 
 
 ```
 
