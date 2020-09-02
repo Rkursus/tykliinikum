@@ -48,7 +48,7 @@ Andmestike täiendamine ja ühendamine. Andmetöötlus paketiga `dplyr`. Andmest
 
 
 		
-## Lisa materjali:
+## Lisamaterjali:
 
 * [MTMS.01.100 Statistiline andmeteadus ja visualiseerimine](https://andmeteadus.github.io/2019/) - R edasijõudnutele.
 * Hulk [RStudio soovitatud raamatuid](https://rstudio.com/resources/books/) (mitmed tasuta _online_ versioonidega).
