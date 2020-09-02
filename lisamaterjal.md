@@ -3,6 +3,10 @@ layout: page
 title: Huvitavat materjali
 ---
 
+## Üldiselt kasulikku
+
+* [R Reference card](https://cran.r-project.org/doc/contrib/Baggott-refcard-v2.pdf) - lühikogum R-i peamistest käskudest
+
 ## Kasulikku kirjandust
 
 E-raamatud:
