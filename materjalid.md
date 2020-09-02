@@ -13,18 +13,14 @@ title: Koolituse materjalid
 * [R kood](https://github.com/Rkursus/tykliinikum/raw/master/_teema1/teema1_kood.R)
 
 
-## teema 2
+## Teema 2
 
 
 Andmete importimine, väärtustetüübid ja teisendused, lisapakettide kasutamine, erinevas formaadis andmestike lugemine R-i, andmetabel R-is, esmane andmete kirjeldus.
 
 * [Materjalid](teema2)
 * [R kood](https://github.com/Rkursus/tykliinikum/raw/master/_teema2/teema2_kood.R)
-* [RStudio snipetid](https://github.com/Rkursus/tykliinikum/raw/master/RStudio_snippetid.txt)
-* Kodutöö
-    * Tähtaeg:
-		* I rühm - 19.09.2019 kell 08:15.
-		* II rühm - 31.10.2019 kell 08:00.
+	* [RStudio snipetid](https://github.com/Rkursus/tykliinikum/raw/master/RStudio_snippetid.txt)
 
 
 ## Teema 3
@@ -43,7 +39,8 @@ Andmestike täiendamine ja ühendamine. Andmetöötlus paketiga `dplyr`. Andmest
 
 * [Materjalid](teema4)
 * [R kood](https://github.com/Rkursus/tykliinikum/raw/master/_teema4/teema4_kood.R)
-* [Kodutöö](kodutoo1)
+
+## [Kodutöö 1](kodutoo1)
     * Tähtaeg: 16.09.2020 kell 23:59
 
 
