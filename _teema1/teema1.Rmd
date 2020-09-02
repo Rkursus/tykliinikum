@@ -219,7 +219,8 @@ kaalud[seq(1, 6, 2)] # iga teine element alates esimesest
 
 
 
-###Ülesanded
+### Ülesanded
+
 1. Moodusta vektor nimega `y`, mille väärtuseks oleks arvud `1 1 1  2 2 2 2  3 3 3 3 3` kasutades käsku `rep`.
 1. Leia vektor `z`, mille liitmisel `y`-le on tulemuseks vektor, mille kõik koordinaadid on võrdsed `7`.
 1. Vali eelnevast vektorist välja iga kolmas väärtus, kasutades kantsulge ja sobivat indeksite vektorit.

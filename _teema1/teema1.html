@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 
 <html>
 
@@ -233,7 +234,15 @@ liik &lt;- c(&quot;koer&quot;, &quot;kass&quot;, &quot;rott&quot;, &quot;kass&qu
 <pre><code>## [1] 7.0 0.4 3.2</code></pre>
 <pre class="r"><code>(1:10)[-c(2, 4)] # negatiivne indeks jätab vastavad vaatlused välja</code></pre>
 <pre><code>## [1]  1  3  5  6  7  8  9 10</code></pre>
-<p>###Ülesanded 1. Moodusta vektor nimega <code>y</code>, mille väärtuseks oleks arvud <code>1 1 1  2 2 2 2  3 3 3 3 3</code> kasutades käsku <code>rep</code>. 1. Leia vektor <code>z</code>, mille liitmisel <code>y</code>-le on tulemuseks vektor, mille kõik koordinaadid on võrdsed <code>7</code>. 1. Vali eelnevast vektorist välja iga kolmas väärtus, kasutades kantsulge ja sobivat indeksite vektorit. 1. Omista muutujale <code>u</code> väärtus 8. Proovi läbi käsud <code>1:u - 1</code> ja <code>1:(u-1)</code>. Milles on erinevus?</p>
+<div id="ülesanded-2" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Ülesanded</h3>
+<ol style="list-style-type: decimal">
+<li>Moodusta vektor nimega <code>y</code>, mille väärtuseks oleks arvud <code>1 1 1  2 2 2 2  3 3 3 3 3</code> kasutades käsku <code>rep</code>.</li>
+<li>Leia vektor <code>z</code>, mille liitmisel <code>y</code>-le on tulemuseks vektor, mille kõik koordinaadid on võrdsed <code>7</code>.</li>
+<li>Vali eelnevast vektorist välja iga kolmas väärtus, kasutades kantsulge ja sobivat indeksite vektorit.</li>
+<li>Omista muutujale <code>u</code> väärtus 8. Proovi läbi käsud <code>1:u - 1</code> ja <code>1:(u-1)</code>. Milles on erinevus?</li>
+</ol>
+</div>
 </div>
 <div id="puuduvad-väärtused" class="section level2">
 <h2><span class="header-section-number">2.3</span> Puuduvad väärtused</h2>
@@ -267,7 +276,7 @@ round(vanused/12, 1)</code></pre>
 <pre class="r"><code>summary(vanused) # NA väärtuste arv tuuakse vaikimisi välja</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ##     3.0     7.0    53.0    42.2    53.0    95.0       1</code></pre>
-<div id="ülesanded-2" class="section level3">
+<div id="ülesanded-3" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Kuidas käitub funktsioon <code>sum(.)</code> kui argumendiks satub puuduvate väärtustega vektor?</li>
