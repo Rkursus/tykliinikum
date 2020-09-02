@@ -41,6 +41,7 @@ Andmestike täiendamine ja ühendamine. Andmetöötlus paketiga `dplyr`. Andmest
 * [R kood](https://github.com/Rkursus/tykliinikum/raw/master/_teema4/teema4_kood.R)
 
 ## [Kodutöö 1](kodutoo1)
+	* Kirjuta lahendus R-i skriptifaili ja saada aadressile kaur.lumiste@ut.ee
     * Tähtaeg: 16.09.2020 kell 23:59
 
 
