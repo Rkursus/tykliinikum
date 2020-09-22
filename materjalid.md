@@ -46,6 +46,30 @@ Andmestike täiendamine ja ühendamine. Andmetöötlus paketiga `dplyr`. Andmest
 * Tähtaeg: 16.09.2020 kell 23:59
 
 
+## Teema 5
+
+Joonised paketiga `ggplot2`.
+
+* [Materjalid](teema5)
+* [R kood](https://github.com/Rkursus/tykliinikum/raw/master/_teema5/teema5_kood.R)
+
+
+## Teema 6
+
+Interaktiivsed raportid paketiga `shiny`.
+
+* [Materjalid](teema6)
+* [R kood](https://github.com/Rkursus/tykliinikum/raw/master/_teema6/teema6_kood.R)
+
+
+## Kodutöö 2
+
+Tee oma andmestikust Shiny rakendus, kus saad muuta kahte tunnust ning vastavalt sellele muutuvad vähemalt kaks joonist.
+
+* Koosta töötav app.R fail 
+* Riputa see shinyapps.io veebilehele (nõuab konto tegemist) ja saada link aadressile kaur.lumiste@ut.ee
+* VÕI saada app.R fail aadressile kaur.lumiste@ut.ee
+* Tähtaeg: 30.09.2020 kell 23:59
 
 		
 ## Lisamaterjali:
