@@ -1,0 +1,248 @@
+---
+title: "Joonised paketiga ggplot2"
+output: 
+  html_document:
+    theme: null
+    number_sections: true
+---
+
+```{r global_options, include=FALSE}
+library(knitr)
+opts_chunk$set(warning=FALSE, message=FALSE, fig.width=6, fig.height=4)
+```
+
+# Mis on ggplot2?
+
+*ggplot2* on populaarne R-i pakett, mis võimaldab suhteliselt vähese vaevaga joonistada ilusaid graafikuid. Kuna joonised on üles ehitatud kiht kihi haaval, on tegu väga paindliku tööriistaga, sest ühel graafikul saab kombineerida erinevaid elemente. 
+
+Suurepärane ülevaate paketi võimalustest annab [ggplot2 dokumentatsioon](https://ggplot2.tidyverse.org/). 
+
+*ggplot2* autoriks on [Hadley Wickham](http://hadley.nz/). Pakett toetub nn graafikute grammatikale (***Grammar of Graphics***), mille avaldas Leland Wilkinson 2005. aastal. Selle grammatika eesmärk on kirjeldada, mida õieti kujutab endast üks graafik. Nii nagu tavakeeles defineerib grammatika sõnaliigid, mille kombineerimisel saame tekitada suvalisi lauseid, defineerib analoogiliselt graafikute grammatika sellised põhikomponendid, mille kombineerimisel on võimalik tekitada suvalisi graafikuid. Hadley on kirjutanud järgnevat:
+
+> In brief, the grammar tells us that a statistical graphic is a mapping from data to aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars).
+
+Graafikute grammatika (Wilkinson) on kontseptsioon, mille kohaselt graafiku ehitamisel ei tuleks lähtuda mitte graafiku tüübist, vaid andmetest. Iga joonis koosneb järgnevatest osadest:
+
+  * andmed (inimeste palk ja sugu)
+  * skaalad (kas esitada palk värviskaalal või x-teljel? kas palga esitamiseks sobib nt log-skaala?)
+  * statistikud (kas palga puhul kujutada keskmist või summat)
+  * geomeetrilised kujundid (kas keskmine peaks olema märgitud tulba kõrgusega või hoopis punktikesega)
+  * koordinaadid (äkki sobib polaarkoordinaadistik?)
+  * tahud (joonis jagatud erinevateks alamjoonisteks)
+  * üldkujundus (font jms)
+
+Paketi `ggplot2` arendamisel pandud tähele statistiku Edward Tufte soovitusi värvide valikul. Üldised soovitused:
+
+  * tindi/info suhe peab olema väike
+  * ei tohiks rõhutada mõnda elementi, kui see pole teistest olulisem (nt kõik värvid võiksid olla sama intensiivsusega)
+  * eelistada silmaga lihtsamini hinnatavaid kujundeid (nt tulba kõrgus tulpdiagrammil vs nurgakraad ringdiagrammil)
+  * eemaldada infot mitte kandvad komponendid (nt liba-3D)
+
+
+
+
+# Joonised funktsiooniga ggplot
+
+```{r, include=FALSE}
+library(ggplot2)
+```
+
+Paketi `ggplot2` põhimõte on joonise ülesehitamine kihthaaval: esmalt joonise põhi ja sellele lisatakse ehk liidetakse   (kasutades `+` märki)  kihtidena erinevad kujundused. Näiteks geomeetriliste elementide (punktid, jooned, tulbad jne) lisamiseks/muutmiseks on käsud `geom_<elemendi_nimi>`. 
+
+Joonise tegemiseks tuleb alustada `ggplot` objekti konstrueerimisest. Üks võimalus on seda teha järgnevalt
+
+```{r, eval=FALSE}
+install.packages('ggplot2')
+library(ggplot2)
+
+ggplot(andmed, aes(x = tunnus1, y = tunnus2))
+```
+
+kus esimese argumendina on ette antud andmestik ning teise argumendina *aesthetic mapping*. Seejuures `aes()` argumendid peavad olema ette antud andmestiku veergude nimed.
+
+Praeguseks hetkeks pole veel võimalik joonist vaadata, sest me pole joonisele ühtegi kihti lisanud (st me pole spetsifitseerinud, milliseid elemente sooviksime joonisel näha - antud *x, y* koordinaadid oleks võimalik tähistada nii punktidega, tulpadega, ühendada joontega jne). Näiteks punktide joonistamiseks peaksime lisama joonisele punktide kihi käsuga `geom_point()`.
+
+Järgnevalt tutvume *ggplot2* võimalustega näidete abil, mis põhinevad meditsiiniüliõpilaste andmestikul:
+
+```{r}
+# lae andmestik "students"
+load(url("https://github.com/Rkursus/tykliinikum/raw/master/data/students.RData"))
+
+# vaatame andmestiku päist
+head(students)
+```
+
+
+## Hajuvusdiagramm
+
+Hajuvusdiagrammi (*scatterplot*) tegemiseks
+
+```{r}
+ggplot(students, aes(x = height, y = weight)) + 
+  geom_point()
+```
+
+millele saame ka värvi lisada `colour = tunnuse_nimi` (võime `colour` asemel kasutada ka `color` või `col`)
+
+
+```{r}
+ggplot(students, aes(x = height, y = weight, colour = gender)) + 
+  geom_point()
+```
+
+
+### Mida teeb `aes()`?
+
+Funktsioon `aes()` (lühend sõnast _aesthetics_) koostab seosed tunnuste ja joonise dimensioonide vahel. Automaatselt otsitakse tunnuste nimesid juurde lisatud andmestikust. Pärast `aes` rakendamist (*with variables mapped into aesthetic space*) teab funktsioon `ggplot()`, et 
+
+* *x* koordinaadiks on *height*, 
+* *y* koordinaadiks on *weight*,
+* värvi näitab *gender*,
+
+nagu me ise spetsifitseerisime.
+
+Igat tüüpi tunnuseid ei saa suvaliste jooniseühikutega seostada, näiteks arvulise tunnusega ei saa siduda punkti kuju (nii palju erineva kujuga punkte pole lihtsalt olemas). Samas aga saab värviga kujutada nii faktortunnust (nt osariik) kui ka arvulist tunnust (nt kõrgus merepinnast). Täpsemini on hajuvusdiagrammi ühel punktil järgmised omadused, millega saab infot edasi anda:
+
+  - `x` -- (kohustuslik) asukoht x-teljel [num, chr, logical, Factor]
+  - `y` -- (kohustuslik) asukoht y-teljel [num, chr, logical, Factor]
+  - `alpha` -- läbipaistvus, väiksem väärtus tähendab suuremat läbipaistvust [num, chr, logical, Factor]
+  - `colour` -- värvus [num, chr, logical, Factor]
+  - `fill` -- sisemuse värvus (ainult mõne `shape` väärtuse korral) [num, chr, logical, Factor]
+  - `shape` -- punkti kuju (kuni 25 erinevat + ise määratavad sümbolid) [chr, logical, Factor]
+  - `size` -- punkti suurus [num]
+
+### Ülesanded
+
+1. Joonista hajuvusdiagramm tudengite andmestikust tunnuste `SVR` (süstoolne vererõhk) ja `DVR` (diastoolne vererõhk) vahel?
+1. Lisa joonisele sugu (`gender`); katseta erinevaid variante (värv, kuju jne).
+1. Kujuta joonisel mingil moel ka kaalu (`weigth`).
+
+```{r, eval=FALSE, include=FALSE}
+
+ggplot(data = students, aes(x = DVR, y = SVR)) + geom_point()
+ggplot(data = students, aes(x = DVR, y = SVR, color = gender)) + geom_point()
+ggplot(data = students, aes(x = DVR, y = SVR, shape = gender)) + geom_point()
+
+ggplot(data = students, aes(x = DVR, y = SVR, color = gender, size = weight )) + geom_point()
+ggplot(data = students, aes(x = DVR, y = SVR, shape = gender, size = age )) + geom_point()
+
+```
+
+
+## Joonise tahkudeks jagamine
+
+Sageli on mõistlik ühe suure ja kirju pildi asemel joonistada palju väikeseid sarnase sisuga pilte. Joonise tahkudeks jagamiseks saab kasutada käsku `facet_wrap`. Sellele argumendile tuleb väärtus anda nn **valemi kujul**: `ridadeks_jagav_muutuja ~ veergudeks_jagav_muutuja`. Ühe  neist muutujatest võib ka ära jätta. Näiteks tunnuse `beer` põhjal saame oma joonise jagada alamjoonisteks (tahkudeks) käskude `facet_grid()` või `facet_wrap()` abil:
+
+```{r}
+ggplot(students, aes(x = height, y = weight, colour = gender)) + 
+  geom_point() + 
+  facet_wrap(~ beer)
+
+ggplot(students, aes(x = height, y = weight, colour = gender)) + 
+  geom_point() + 
+  facet_grid(beer ~ gender)
+```
+
+## Tulpdiagramm ja histogramm
+
+Graafiku teljed võivad olla seotud ka diskreetse tunnusega (nt `Factor`), näiteks võiksime tudengite õlle tarbimise uurimisel siduda x-teljega tunnuse `beer`:
+```{r}
+ggplot(data = students, aes(x = beer)) + 
+  geom_bar()
+```
+
+Tekkis tulpdiagramm, kus iga tulp näitab tudengite arvu vastavas õlle tarbimise kategoorias. Ent ühe tulba sees võivad olla mõne teise tunnise järgi jaotused olla erinevad, näiteks enda tervise hinnagu (`health`) poolest. Kuna iga joonise element koosneb piirjoonest ning sisemisest osast, tuleb vastava osa värvi muutmiseks kasutada kas argumenti `colour` või `fill`:
+```{r}
+ggplot(data = students, aes(x = beer)) + 
+  geom_bar(aes(fill = health))
+```
+
+Kui on soov esitada õlle tarbmise järgi tervise hinnangu osakaalud (mitte absoluutarvud), siis peab kasutama lisaargumenti `position = "fill"`, ühtlasi on siis mõistlik muuta y-telje nimetus:
+```{r, eval=FALSE }
+ggplot(data = students, aes(x = beer)) + 
+  geom_bar(aes(fill = health), position = "fill") +
+  ylab("osakaal")
+```
+
+Sageli esitatakse tulpdiagrammi tulbad horisontaalselt, selle saavutamiseks tuleb käsk kirja panna sama moodi kui enne, aga lisada tuleb joonise pööramine:
+```{r}
+ggplot(data = students, aes(x = beer)) + 
+  geom_bar() + 
+  coord_flip()
+```
+
+
+Praegu andsime tulpdiagrammi moodustamises ette tunnuse nö toorväärtused, vahel on aga tulpdiagramm vaja moodustada valmis sagedustabeli põhjal. Selleks, et tulpade kõrgus  määrata mingi tunnuse väärtuste põhjal tuleks `geom_bar` argumendiks lisada  `stat = "identity"`
+```{r, eval = F}
+sagedustabel <- as.data.frame(table(students$beer))
+
+ggplot(sagedustabel, aes(x = Var1, y = Freq)) + 
+  geom_bar(stat = "identity")
+```
+```{r, echo = F, eval = F}
+sagedustabel <- as.data.frame(table(students$beer, students$health))
+
+ggplot(sagedustabel, aes(x = Var1, y = Freq, fill = Var2)) + 
+  geom_bar(stat = "identity", position = "fill")
+```
+
+
+Pideva tunnuse uurimiseks on mõistlik kasutada histogrammi, nii proovib `ggplot` arvata, mis on mõistlik tulpade arv, sest iga üksiku väärtuse jaoks pole mõistlik oma tulpa joonistada. Väärtused jagatakse vahemikesse ja loetakse kokku - tulemuseks histogramm:
+
+```{r}
+ggplot(students, aes(x = weight)) + 
+  geom_histogram()
+# Saame histogrammi tulpasid värvida soo järgi
+ggplot(students, aes(x = weight, fill=gender)) + 
+  geom_histogram()
+# Või jagada histogramm tahkudeks soo järgi, üksteise alla
+ggplot(students, aes(x = weight, fill=gender)) + 
+  geom_histogram() + 
+  facet_wrap(~ gender, ncol=1)
+# Mitteparameetriline tiheduse hinnang
+ggplot(students, aes(x = weight, fill = gender)) + 
+  geom_density(alpha=0.5)
+```
+
+## Karpdiagramm
+
+Väärtuste hajuvusest ja jaotusest annavad aimu järgmised võimalused:
+
+```{r, eval=FALSE}
+ggplot(students, aes(x = beer, y = weight)) + geom_boxplot()
+ggplot(students, aes(x = beer, y = weight)) + geom_jitter()
+```
+
+```{r}
+# informatiivse joonise saame kahe eelneva kihi (boxploti ja punktide) kombineerimisel
+ggplot(students, aes(x = beer, y = weight)) + 
+  geom_boxplot() + geom_jitter()
+```
+
+
+## Seose näitamine joonisel
+
+Saame lisada näiteks regressioonisirge iga grupi jaoks
+
+```{r}
+ggplot(students, aes(x = height, y = weight, colour=gender)) + 
+  geom_point() + stat_smooth(method="lm", se=FALSE)
+```
+
+Väike kokkuvõte joonise tüüpide valikust:
+
+Tunnus1      |   Tunnus2    | Sobivad joonised  | `geom_<?>`
+-------------|--------------|------------------ | --------------
+pidev/arvuline | -         | histogramm (tulbad) | `histogram`
+pidev/arvuline | -         | tihedus   | `density`
+kategooriline | -          | tulpdiagramm (tulbad) | `bar`
+kategooriline | kategooriline | tulpdiagramm (tulbad) | `bar`
+pidev/arvuline | pidev/arvuline | hajuvusdiagramm (punktid) | `point`
+pidev/arvuline | kategooriline | karpdiagramm (karbid) | `boxplot`
+pidev/arvuline | aeg vms järgnevus | joondiagramm (jooned) | `line`
+
+### Ülesanded
+
+1. Joonista tudengite vanuse (tunnus `age`) histogramm.
+1. Uuri tunnuse `height` jaotust erinevates tunnuse `beer` kategooriates, kasutades karpdiagrammi.
+1. Tee hajuvusdiagramm vererõhunäitudele (`DVR` ja ``SVR`) ja lisa sinna regressioonsirge. Proovi lisada regressioonsirge kummagi soo jaoks eraldi.

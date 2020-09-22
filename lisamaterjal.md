@@ -11,10 +11,11 @@ title: Huvitavat materjali
 
 E-raamatud:
 * [R for Data Science (G. Grolemund, H. Wickham)](http://r4ds.had.co.nz/)
-* [Data visualization: a practical introduction (Kieran Healy)](http://socviz.co/)
-* [R Graphics Cookbook (Winston Chang)](https://r-graphics.org/)
+* [Data visualization: a practical introduction (K. Healy)](http://socviz.co/)
+* [R Graphics Cookbook (W. Chang)](https://r-graphics.org/)
 * [Hands-On Programming with R (G. Grolemund)](https://rstudio-education.github.io/hopr/)
 * [R Markdown: The Definitive Guide (Y. Xie, J. J. Allaire, G. Grolemund)](https://bookdown.org/yihui/rmarkdown/)
+* [Mastering Shiny (H. Wickham)](https://mastering-shiny.org/)
 
 ## Andmeteadus
 
