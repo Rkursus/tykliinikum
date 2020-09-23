@@ -17,7 +17,7 @@ lapply(pkgs, library, character.only = TRUE)
 
 Tutvustame lühidalt R `shiny` paketti, mis võimaldab arendada, testida ja ellu tuua interaktiivseid veebirakendusi - internetis vabalt  kättesaadavaid veebilehti, kus kasutaja saab sisu muuta, sättida seadistusi ning näiteks iseseisvalt teostada analüüse.
 
-`Shiny` on ehitatud väga paiblikuks ja võimaldab ehitada väga keerukaid päriselulisi rakendusi. Natuke klišeelik aga `shiny`-ga oled limiteeritud vaid fantaasiaga (ja esialgu ka oskustega aga proovime täna sellest takistusest üle saada. 
+`Shiny` on ehitatud väga paindlikuks ja võimaldab ehitada väga keerukaid päriselulisi rakendusi. Natuke klišeelik aga `shiny`-ga oled limiteeritud vaid fantaasiaga (ja esialgu ka oskustega aga proovime täna sellest takistusest üle saada. 
 
 R `shiny` on küll vabavara aga seda toetab suur andunud fännide [kogukond](https://groups.google.com/d/forum/shiny-discuss)
 ja lisaks äriline tugi RStudio poolt. Selle tõttu on Shiny väga hästi dokumenteeritud, interneti levib mitmeid näited ( [Gallery of examples](https://shiny.rstudio.com/gallery/)) koos `shiny` koodiga ja kõige kasulikum - väga hea [_online_ õppematerjal](http://shiny.rstudio.com/tutorial/) alustajatele.
@@ -41,7 +41,7 @@ Enne teemasse sisse sukeldudes on hea teada, mida soovid `shiny`-ga saavutada. V
 `Shiny` ei sobi väga hästi:
 
 - Suurte andmestike töötlemiseks (pigem tasub eelnevad arvutused nt. andmebaasis ära teha ja siis kasutada `shiny`-t tulemuste visualiseerimiseks).
-- Tõsisema kaardirakendusena: siin on mõistlik kasutada konkreetselt selle jaoks mõeldud tarkvara nagu [GeoServer](http://geoserver.org/) (aga mingil tasemel saab ka `shiny`hakkama, näiteks [SuperZip](http://shiny.rstudio.com/gallery/superzip-example.html) näide).
+- Tõsisema kaardirakendusena: siin on mõistlik kasutada konkreetselt selle jaoks mõeldud tarkvara nagu [GeoServer](http://geoserver.org/) (aga mingil tasemel saab ka `shiny` hakkama, näiteks [SuperZip](http://shiny.rstudio.com/gallery/superzip-example.html) näide).
 - Kasutajainfo kogumiseks.
 
 
@@ -49,7 +49,7 @@ Alternatiivid `shiny`-le:
 
 - [Google charts](https://developers.google.com/chart/) mis ühildub R-ga **[googleVis](http://cran.r-project.org/package=googleVis)** paketi abil.
 - [Plotly](https://plot.ly/), mis samuti ühildub R-ga **[plotly](https://plot.ly/r/getting-started/)** paketi abil.
-- [d3](http://d3js.org/) on paindlik JavaScript visualisatstiooni pakett, mis on kättesaadav R-s [d3Network](http://cran.r-project.org/web/packages/d3Network/index.html) paketi kaudu.
+- [d3](http://d3js.org/) on paindlik JavaScript visualisatsiooni pakett, mis on kättesaadav R-s [d3Network](http://cran.r-project.org/web/packages/d3Network/index.html) paketi kaudu.
 - [rCharts](http://rcharts.io/) sarnane `shiny`-ga aga keskendub rohkem visualisatsioonidele ja pakub vähem kasutajaliidese valikuid.
 
 Eelpool oleva info võrra rikkama hakkame aga pihta.
@@ -128,8 +128,30 @@ See on kasutajale varjatud osa ehk koht kus toimub andmete manipuleerimine ja v�
 
 Paar märkust siiski, mida silmas pidada:
 
-* Saadud joonise peame ette andma välund-objektile ehk `output`.
+* Saadud joonise peame ette andma väljund-objektile ehk `output`.
 * Kasutajaliidesest saadud sisendite poole pöördume `input$<sisendiNimi>`.
+* Kasutajaliidesse saadetakse sisu, mis on defineeritud viisil `output$<väljundiNimi>`.
+
+Üldiselt toimub `server` osas ka kogu andmetöötlus.
+
+
+
+## Ülesanded
+
+1. Loe sisse `students` andmestik.
+1. Tee joonis 1, mis kuvaks tudengite spordi kategooriate kaupa (NB! Tunnus `sport` on algselt arvuline tunnus. Selle saad kategooriliseks muuta funktsiooni `factor()` abil). Soovitatav on kasutada karpdiagrammi.
+1. Lisa joonisele juurde soo tunnus katsetades erinevaid variante.
+1. Tee joonis 2, kus on diastoolne vererõhk ja vanus
+
+## Shiny ülesanded
+
+1. Koosta kasutajaliides, milles saab rippmenüüst määrata tunnuse `health` kategooria.
+1. Lisa kasutajaliidesesse raadionupp, mis küsib kasutajalt "*Lisa joonisele regressioonsirge*" ja vastusevariandid: `Jah`, `Ei`.
+1. Täista koodi, et kasutajaliidesse kuvatakse eelnevalt valminud 2 joonist.
+1. Pane joonis muutuma nii, et vastavalt raadionupu valikule lisatakse joonisele 2 regregssioonsirge või mitte.
+1. Täiusta `server` osa nii, et kuvatakse vaid valitud `health` taseme andmed.
+1. Täiusta koodi nii, et saaks kuvada ka kõik andmed (ehk tunnuse `health` rippmenüüs oleks ka valik "Kõik andmed").
+
 
 
 <!--

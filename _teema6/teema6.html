@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 
 <html>
 
@@ -66,7 +66,7 @@ if (window.hljs) {
 <div id="sissejuhatus" class="section level1">
 <h1><span class="header-section-number">1</span> Sissejuhatus</h1>
 <p>Tutvustame lühidalt R <code>shiny</code> paketti, mis võimaldab arendada, testida ja ellu tuua interaktiivseid veebirakendusi - internetis vabalt kättesaadavaid veebilehti, kus kasutaja saab sisu muuta, sättida seadistusi ning näiteks iseseisvalt teostada analüüse.</p>
-<p><code>Shiny</code> on ehitatud väga paiblikuks ja võimaldab ehitada väga keerukaid päriselulisi rakendusi. Natuke klišeelik aga <code>shiny</code>-ga oled limiteeritud vaid fantaasiaga (ja esialgu ka oskustega aga proovime täna sellest takistusest üle saada.</p>
+<p><code>Shiny</code> on ehitatud väga paindlikuks ja võimaldab ehitada väga keerukaid päriselulisi rakendusi. Natuke klišeelik aga <code>shiny</code>-ga oled limiteeritud vaid fantaasiaga (ja esialgu ka oskustega aga proovime täna sellest takistusest üle saada.</p>
 <p>R <code>shiny</code> on küll vabavara aga seda toetab suur andunud fännide <a href="https://groups.google.com/d/forum/shiny-discuss">kogukond</a> ja lisaks äriline tugi RStudio poolt. Selle tõttu on Shiny väga hästi dokumenteeritud, interneti levib mitmeid näited ( <a href="https://shiny.rstudio.com/gallery/">Gallery of examples</a>) koos <code>shiny</code> koodiga ja kõige kasulikum - väga hea <a href="http://shiny.rstudio.com/tutorial/"><em>online</em> õppematerjal</a> alustajatele.</p>
 <p>Hiljuti tehti avalikuks e-raamat <a href="https://mastering-shiny.org/">Mastering Shiny</a>.</p>
 <p>Ühesõnaga lihtsasti kättesaadavaid materjale oskuste arendamiseks jagub, tänase koolituse eesmärk on kätte anda baasteadmised, et kogu materjalis paremini orienteeruda ja näidata, et <code>shiny</code> veebirakenduste tegemine on üsna lihtne.</p>
@@ -83,14 +83,14 @@ if (window.hljs) {
 <p><code>Shiny</code> ei sobi väga hästi:</p>
 <ul>
 <li>Suurte andmestike töötlemiseks (pigem tasub eelnevad arvutused nt. andmebaasis ära teha ja siis kasutada <code>shiny</code>-t tulemuste visualiseerimiseks).</li>
-<li>Tõsisema kaardirakendusena: siin on mõistlik kasutada konkreetselt selle jaoks mõeldud tarkvara nagu <a href="http://geoserver.org/">GeoServer</a> (aga mingil tasemel saab ka <code>shiny</code>hakkama, näiteks <a href="http://shiny.rstudio.com/gallery/superzip-example.html">SuperZip</a> näide).</li>
+<li>Tõsisema kaardirakendusena: siin on mõistlik kasutada konkreetselt selle jaoks mõeldud tarkvara nagu <a href="http://geoserver.org/">GeoServer</a> (aga mingil tasemel saab ka <code>shiny</code> hakkama, näiteks <a href="http://shiny.rstudio.com/gallery/superzip-example.html">SuperZip</a> näide).</li>
 <li>Kasutajainfo kogumiseks.</li>
 </ul>
 <p>Alternatiivid <code>shiny</code>-le:</p>
 <ul>
 <li><a href="https://developers.google.com/chart/">Google charts</a> mis ühildub R-ga <strong><a href="http://cran.r-project.org/package=googleVis">googleVis</a></strong> paketi abil.</li>
 <li><a href="https://plot.ly/">Plotly</a>, mis samuti ühildub R-ga <strong><a href="https://plot.ly/r/getting-started/">plotly</a></strong> paketi abil.</li>
-<li><a href="http://d3js.org/">d3</a> on paindlik JavaScript visualisatstiooni pakett, mis on kättesaadav R-s <a href="http://cran.r-project.org/web/packages/d3Network/index.html">d3Network</a> paketi kaudu.</li>
+<li><a href="http://d3js.org/">d3</a> on paindlik JavaScript visualisatsiooni pakett, mis on kättesaadav R-s <a href="http://cran.r-project.org/web/packages/d3Network/index.html">d3Network</a> paketi kaudu.</li>
 <li><a href="http://rcharts.io/">rCharts</a> sarnane <code>shiny</code>-ga aga keskendub rohkem visualisatsioonidele ja pakub vähem kasutajaliidese valikuid.</li>
 </ul>
 <p>Eelpool oleva info võrra rikkama hakkame aga pihta.</p>
@@ -140,9 +140,31 @@ runExample(&quot;07_widgets&quot;)</code></pre>
 <p>See on kasutajale varjatud osa ehk koht kus toimub andmete manipuleerimine ja väljundi (nt. jooniste või tabelite) vormistamine. Siin kasutame on kõigi eelmiste koolitusteemadest kogutud teadmisi (sh. <code>ggplot2</code> oskusi).</p>
 <p>Paar märkust siiski, mida silmas pidada:</p>
 <ul>
-<li>Saadud joonise peame ette andma välund-objektile ehk <code>output</code>.</li>
+<li>Saadud joonise peame ette andma väljund-objektile ehk <code>output</code>.</li>
 <li>Kasutajaliidesest saadud sisendite poole pöördume <code>input$&lt;sisendiNimi&gt;</code>.</li>
+<li>Kasutajaliidesse saadetakse sisu, mis on defineeritud viisil <code>output$&lt;väljundiNimi&gt;</code>.</li>
 </ul>
+<p>Üldiselt toimub <code>server</code> osas ka kogu andmetöötlus.</p>
+</div>
+<div id="ülesanded" class="section level2">
+<h2><span class="header-section-number">3.3</span> Ülesanded</h2>
+<ol style="list-style-type: decimal">
+<li>Loe sisse <code>students</code> andmestik.</li>
+<li>Tee joonis 1, mis kuvaks tudengite spordi kategooriate kaupa (NB! Tunnus <code>sport</code> on algselt arvuline tunnus. Selle saad kategooriliseks muuta funktsiooni <code>factor()</code> abil). Soovitatav on kasutada karpdiagrammi.</li>
+<li>Lisa joonisele juurde soo tunnus katsetades erinevaid variante.</li>
+<li>Tee joonis 2, kus on diastoolne vererõhk ja vanus</li>
+</ol>
+</div>
+<div id="shiny-ülesanded" class="section level2">
+<h2><span class="header-section-number">3.4</span> Shiny ülesanded</h2>
+<ol style="list-style-type: decimal">
+<li>Koosta kasutajaliides, milles saab rippmenüüst määrata tunnuse <code>health</code> kategooria.</li>
+<li>Lisa kasutajaliidesesse raadionupp, mis küsib kasutajalt “<em>Lisa joonisele regressioonsirge</em>” ja vastusevariandid: <code>Jah</code>, <code>Ei</code>.</li>
+<li>Täista koodi, et kasutajaliidesse kuvatakse eelnevalt valminud 2 joonist.</li>
+<li>Pane joonis muutuma nii, et vastavalt raadionupu valikule lisatakse joonisele 2 regregssioonsirge või mitte.</li>
+<li>Täiusta <code>server</code> osa nii, et kuvatakse vaid valitud <code>health</code> taseme andmed.</li>
+<li>Täiusta koodi nii, et saaks kuvada ka kõik andmed (ehk tunnuse <code>health</code> rippmenüüs oleks ka valik “Kõik andmed”).</li>
+</ol>
 <!--
 This is probably the best place to start as it's where you define the user's
 input into the project. `surver.R` can then be instructed to take the user's
