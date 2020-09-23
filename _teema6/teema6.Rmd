@@ -1,5 +1,5 @@
 ---
-title: "A practical introduction to Shiny"
+title: "Sissejuhatus `shiny`-sse"
 output: 
   html_document:
     theme: null
