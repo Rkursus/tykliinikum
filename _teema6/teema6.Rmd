@@ -56,107 +56,27 @@ Eelpool oleva info võrra rikkama hakkame aga pihta.
 
 # Kuidas alustada `shiny`-ga
 
-**shiny** in fact contains a wide range of pre-built apps that can be explored and
-modified by the user to see how the system works.
+Paketiga tuleb kaasa mitu valmis rakendust koos koodiga, mida saab vajadusel uurida ja nendelt õppida kuidas üks `shiny` rakendus töötab.
 
-To see what examples are available, use the `runExample()` function:
+Selleks, et näha millised näited on saadaval tuleb jooksutada `runExample()` funktsiooni:
 
 ```{r}
 runExample()
 ```
 
-Based on the results from this, you can proceed. Let's run the widgets example:
+Nende hulgast võib mõne valida, valime näiteks järgmise näite:
 
 ```{r, eval=FALSE}
 runExample("07_widgets")
 ```
 
-The most informative example for beginners is probably the first:
+Kõige parem on ilmselt alustada hoopis järgmisest näitest:
 
 ```{r, eval=FALSE}
 runExample("01_hello")
 ```
 
-Spend some time taking a look at the `ui.R` and `server.R` files. Note that
-**every shiny app must contain these two files**, placed in a folder of the
-app's name. That's fundamental to the app's structure. The following directory
-structure (contained on this project's GitHub page), for example, 
-contains two **shiny** apps:
-
-```
-|-- hi
-|   |-- change-app-lines.R
-|   |-- server.R
-|   `-- ui.R
-|-- rentSplit
-|   |-- server.R
-|   |-- shinyapps
-|   |   `-- robinlovelace
-|   |       `-- rentSplit.dcf
-|   `-- ui.R
-|-- learning-shiny.Rmd
-`-- learning-shiny.R
-
-```
-
-The directory structure illustrated above shows a typical R working director
-with `shinyapps.R` being the only file in the route directory, 
-to run the apps in the sub-folders `hi` and `rentSplit`. These
-are apps. Note that both contain critical **ui**and **server** components. 
-`rentSplit` contains another sub-directory `shinyapps`, used to embed the app online
-on [shinyapps.io](http://www.shinyapps.io/).
-
-The rentSplit app that we are going to build today is hosted on this website
-and available to anyone worldwide, through the following link:
-https://robinlovelace.shinyapps.io/rentSplit/
-
-Before building your own app (the next section), it's worth looking at the
-contents of the `runExample("01_hello")` app in some detail. We will modify
-this example for our own needs.
-
-## Downloading the project repository
-
-To download the folder that contains all the code needed to run the examples
-in this tutorial, navigate to the project's repository:
-https://github.com/Robinlovelace/learning-shiny
-
-Click on 'Download ZIP' on the right hand side of this page. Unzip the folder.
-Navigate into this folder and open the file `learning-shiny.Rproj` in
-RStudio. Take a look around and make yourself at home in this folder: it will
-be your digital home throughout this tutorial!
-
-# Modifying an app for your own needs
-
-The cornerstone of scientific progress can be summarised in a single phrase
-by Isaac Newton: 
-
-> "Building on the shoulders of giants"
-
-This means that instead of starting from scratch every time, sometimes we can 
-move forward faster by modifying what someone else has already done, giving
-due credit to the original source. This is ethic underlying software allows
-open source options such as Linux
-and R to triumph over proprietary programs such as Microsoft Windows
-and [SAS](http://www.r-bloggers.com/sas-is-1in-plans-to-discontinue-use/).
-
-So let's make a modification to the `01_hello` app, so that the user can *decide*
-which colour they want the histogram to be. The end result should look something
-like Figure 2.
-
-```{r, echo=FALSE, fig.cap="A modified version of the '01_hello' shiny example - note the dropdown menu to select colour that we have added."}
-img <- readPNG(RCurl::getURLContent("https://raw.githubusercontent.com/Robinlovelace/robinlovelace.github.io/master/img/shiny-modified-app.png"))
-grid.raster(img)
-# ![modified](/home/robin/repos/robinlovelace.github.io/img/shiny-modified-app.png)
-```
-
-How do we create this? 
-First create a new folder and label it with your new app's name
-(perhaps called `himod` which mean's 'hello_01 modified') This folder will contain
-the new app's code so it runs from the project's root directory.
-Next we must identify and edit the two key features of the shiny
-app: the *user interface* and the *server side*.
-
-## The user interface (ui.R)
+Tutvu lähemalt kahe funktsiooniga - `ui` and `server`. **Neid funktsioone peab iga `shiny` rakendus sisaldama**. That's fundamental to the app's structure.
 
 This is probably the best place to start as it's where you define the user's
 input into the project. `surver.R` can then be instructed to take the user's
@@ -196,6 +116,49 @@ selectInput(inputId = "inputID",
   selected = "default option" )
 ```
 
+
+# Olemasoleva rakenduse muutmine
+
+The cornerstone of scientific progress can be summarised in a single phrase
+by Isaac Newton: 
+
+> "Building on the shoulders of giants"
+
+This means that instead of starting from scratch every time, sometimes we can 
+move forward faster by modifying what someone else has already done, giving
+due credit to the original source.
+
+So let's make a modification to the `01_hello` app, so that the user can *decide*
+which colour they want the histogram to be. The end result should look something
+like Figure 2.
+
+```{r, echo=FALSE, fig.cap="A modified version of the '01_hello' shiny example - note the dropdown menu to select colour that we have added."}
+img <- readPNG(RCurl::getURLContent("https://raw.githubusercontent.com/Robinlovelace/robinlovelace.github.io/master/img/shiny-modified-app.png"))
+grid.raster(img)
+# ![modified](/home/robin/repos/robinlovelace.github.io/img/shiny-modified-app.png)
+```
+
+
+How do we create this? 
+First create a new folder and label it with your new app's name
+(perhaps called `himod` which mean's 'hello_01 modified') This folder will contain
+the new app's code so it runs from the project's root directory.
+Next we must identify and edit the two key features of the shiny
+app: the *user interface* and the *server side*.
+
+
+When you are complete, run the app either by typing `runApp("hi")` or by
+clicking on the 'Run App' button in RStudio. Note that when new content is added to 
+the user interface side of shiny, it does not necessarily affect the app
+(in this case, we can select a colour without any impact on the resulting graph).
+To change the output, we need to move to the server side.
+
+
+Before building your own app (the next section), it's worth looking at the
+contents of the `runExample("01_hello")` app in some detail. We will modify
+this example for our own needs.
+
+
 ## Task 1a: adding a color selector option
 
 You can add new widgets to the `ui.R` script without affecting the server side.
@@ -203,11 +166,7 @@ Do this now to create the drop down menu of color selection illustrated above.
 
 > Hint: Check RStudio's [page on **shiny** widgets](http://shiny.rstudio.com/tutorial/lesson3/) (lesson 3 at shiny.rstudio.com/tutorial/) for a list of available widgets
 
-When you are complete, run the app either by typing `runApp("hi")` or by
-clicking on the 'Run App' button in RStudio. Note that when new content is added to 
-the user interface side of shiny, it does not necessarily affect the app
-(in this case, we can select a colour without any impact on the resulting graph).
-To change the output, we need to move to the server side.
+
 
 ## The server side (server.R)
 
@@ -263,46 +222,7 @@ input$inputID
 
 Understanding this is critical to completing the next task.
 
-## Task 1b: make the graph's color change by modifying server.R
 
-Based on the above description of the link between `ui.R` and `server.R`,
-make the colour selected in the user interface implemented in **task 1a**
-be an active input into the graph: make the graph change colour.
 
-When you've completed tasks 1a and 1b, it's time to create a **shiny** app from scratch.
-Following the learning by doing ethic, it's recommended that you type the entirety
-of the code for this app (comprising of only 2 files, `server.R` and `ui.R`),
-rather than copy-and-pasting from the rentSplit example already contained in this
-project.
 
-As always, before we jump into writing the code, we should think a little about
-the wider context: think more, work less!
-
-# Building RentSplitR
-
-To see how **shiny** works, there is no better way than starting with a *pen and paper*.
-That's because your web application should be driven by a clear sense of purpose.
-Just learning **shiny** for the hell of it, with no use cases in mind could
-be a waste of time: you'll only retain the techniques if you use them frequently
-on a project that is worth the time invested. So here's a mock example of the need
-for a new app. The need is as follows:
-
-- Many people who share accommodation are not happy with their room/rent.
-- It's difficult to judge how to set the rent fairly, based on how good different rooms are.
-- Therefore there is a need for an interactive tool to help decide the right rent.
-
-## Task 2: re-create RentSplit to make it your own
-
-Based on the code contained in the rentSplit folder, re-write this app.
-Resisting the temptation to copy-and-paste, and referring frequently to
-the RStudio [tutorial](http://shiny.rstudio.com/tutorial/) will improve your
-understanding. It's likely that error messages will appear the first few times you
-try to run the app - this is normal! Persevere and you'll feel a sense of satisfaction
-when the app, written entirely by you, finally works.
-
-# Task 3: write your own app
-
-By carefully completing the previous two tasks you should have built-up the
-skills needed to build and deploy your own apps. This final task is open ended:
-create your own app that meets a real world need.
 
