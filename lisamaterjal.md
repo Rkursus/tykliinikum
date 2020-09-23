@@ -6,6 +6,8 @@ title: Huvitavat materjali
 ## Üldiselt kasulikku
 
 * [R Reference card](https://cran.r-project.org/doc/contrib/Baggott-refcard-v2.pdf) - lühikogum R-i peamistest käskudest
+* [`ggplot2` _cheat sheet_](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf)
+* [`shiny` _cheat sheet_](https://raw.githubusercontent.com/rstudio/cheatsheets/master/shiny.pdf)
 
 ## Kasulikku kirjandust
 
@@ -30,11 +32,12 @@ E-raamatud:
 * [Miks on sektordiagrammid halvad](https://youtu.be/do4hN1UQIl0)
 * [Blogi visualiseerimisest teadustöös](http://ristretto.black/category/graph/)
 * [Data Visualization for Human Perception](https://www.interaction-design.org/literature/book/the-encyclopedia-of-human-computer-interaction-2nd-ed/data-visualization-for-human-perception)(alampeatükk tasuta e-raamatust [The Encyclopedia of Human-Computer Interaction](https://www.interaction-design.org/literature/book/the-encyclopedia-of-human-computer-interaction-2nd-ed))
-
+* [Top 50 `ggplot2` näidet](r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 
 ## Veel kasulikke linke:
 
 * [LTMS.00.016 Rakendustarkvara: R](https://rkursus.github.io/sygis2019) - Eestikeelne R kursus.
+* [MTMS.01.100 Statistiline andmeteadus ja visualiseerimine](https://andmeteadus.github.io/2020/) - Eestikeelne R-i jätku kursus + visualiseerimine.
 * Hulk [RStudio soovitatud raamatuid](https://rstudio.com/resources/books/) (mitmed tasuta _online_ versioonidega).
 * [R-bloggers](https://www.r-bloggers.com/) - Blogi huvitavatest R-i rakendustest.
 * [Simply Statistics](https://simplystatistics.org/) - Huvitav R-i blogi.

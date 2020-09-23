@@ -59,7 +59,7 @@ Joonised paketiga `ggplot2`.
 Interaktiivsed raportid paketiga `shiny`.
 
 * [Materjalid](teema6)
-
+* [Koolitusel koostatud `shiny` rakendus](https://github.com/Rkursus/tykliinikum/raw/master/_teema6/app.R)
 
 ## Kodutöö 2
 
