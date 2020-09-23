@@ -76,8 +76,63 @@ Kõige parem on ilmselt alustada hoopis järgmisest näitest:
 runExample("01_hello")
 ```
 
-Tutvu lähemalt kahe funktsiooniga - `ui` and `server`. **Neid funktsioone peab iga `shiny` rakendus sisaldama**. That's fundamental to the app's structure.
+Tutvu lähemalt kahe komponentidega - `ui` and `server`. **Need komponendid peavad igas `shiny` rakenduses olema**. Vaatame lähemalt mõlemat osa, mida kumbki sisaldab või mida peab sisaldama ja kuidas nad kokku töötavad.
 
+## Kasutajaliides ehk funktsioon `ui`
+
+Lühend `ui` tähendab *user interface* ehk kasutajaliides. Selles osas paneme paika rakenduse välimuse ning ehitame selle elementhaaval. Vaata järgmist koodi ning võrdle `"01_hello"` näitega (vihje - nimed annavad aimu, mis osaga on tegemist).
+
+```{r, eval=FALSE}
+ui <- fluidPage(
+  titlePanel("Hello Shiny!"),
+  sidebarLayout(
+    sidebarPanel(
+      # sisu siia - üldiselt sisaldab kasutajasisendeid - nuppe ja sisestusväljasid
+     ),
+    mainPanel(
+      # sisu nagu joonised, tabelid, seletav tekst tuleb üldiselt siia
+    )
+  )
+)
+```
+
+Veelgi põhjalikumat uurimist saad teha kui mõne komponendi eemaldad ja vaata, mis on tulemuseks. Tasub uurida ka funktsioonide `sidebarLayout`, `sidebarPanel` ja `mainPanel` dokumentatsiooni.
+
+Kasutajaliidesse on võimalik sisse ehitada hulganisti võimalusi, mis koguvad kasutaja sisendeid kasutajalt. Näiteks rippmenüüst sisendi saamiseks kasutaksime järgmist koodi:
+
+```{r, eval=FALSE}
+selectInput(                      # Igal sisenditüübil on oma nimi
+  inputId = "inputID",            # anna mõni nimi, mida kasutav hiljem, et saada sisendi väärtus
+  label = "Silt, mida kasutaja näeb",
+  choices = list("valikute", "nime-", "kiri"),
+  selected = "vaikimisi valitud" )
+```
+
+Et näha, millised sisenditüübid on ``shiny`-s võimalikud on mõistlik vaadata [*cheat sheet*-i](https://rstudio.com/wp-content/uploads/2015/02/shiny-cheatsheet.pdf) või jooksutada järgmiseid näiteid galeriist:
+
+```{r, eval = F}
+runExample("04_mpg")
+runExample("05_sliders")
+runExample("06_tabsets")
+runExample("07_widgets")
+```
+
+Kasutajaliidest saab veel mitmel viisil muuta aga kõikidest võimalustest ei jõua siin ülevaadet anda. Kõige parem on uurida näiteid, õppematerjali ja otsida inspiratsiooni internetist.
+
+Kogu sisu tuleks kuvada funktsioonis `mainPanel()` aga sinna kuvatakse sisu, mille koostame `server` osises.
+
+
+## Serveri osa
+
+See on kasutajale varjatud osa ehk koht kus toimub andmete manipuleerimine ja väljundi (nt. jooniste või tabelite) vormistamine. Siin kasutame on kõigi eelmiste koolitusteemadest kogutud teadmisi (sh. `ggplot2` oskusi).
+
+Paar märkust siiski, mida silmas pidada:
+
+* Saadud joonise peame ette andma välund-objektile ehk `output`.
+* Kasutajaliidesest saadud sisendite poole pöördume `input$<sisendiNimi>`.
+
+
+<!--
 This is probably the best place to start as it's where you define the user's
 input into the project. `surver.R` can then be instructed to take the user's
 input and base the output on the input (yes, `server.R` creates
@@ -86,35 +141,6 @@ a new function with `function(input, output)`!).
 We must look past some essential but less interactive elements before getting
 to the interactive widgets that can be changed. These usually include:
 
-```{r, eval=FALSE}
-shinyUI(fluidPage(
-  titlePanel("Hello Shiny!"),
-  sidebarLayout(
-    sidebarPanel(
-#       ... content here
-     )
-   )
-))
-```
-
-We don't need to go into detail about what these are and what they do.
-This is explained on RStudio's **shiny** [tutorial](http://shiny.rstudio.com/tutorial/) and **shiny'**s internal documentation system.
-Typing `?sidebarLayout`, for example, will display some very useful help!
-As [Lesson 2](http://shiny.rstudio.com/tutorial/lesson2/) from RStudio's tutorial
-explains, `shinyUI(fluidPage( ))` alone will create the display. It is *fluid* because
-it automatically adjusts to the width of the user's device.
-
-What we are interested in is how to add additional [widgets](http://shiny.rstudio.com/tutorial/lesson3/), a full list of which is presented here: http://shiny.rstudio.com/tutorial/lesson3/ .
-
-To add an option selector widget, we use, logically enough, the `selectInput()`
-widget function. The essential arguments are as follows:
-
-```{r, eval=FALSE}
-selectInput(inputId = "inputID",
-  label = "What the user sees",
-  choices = list("list", "of", "options"),
-  selected = "default option" )
-```
 
 
 # Olemasoleva rakenduse muutmine
@@ -224,5 +250,5 @@ Understanding this is critical to completing the next task.
 
 
 
-
+-->
 
