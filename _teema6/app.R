@@ -19,12 +19,13 @@ ui <- fluidPage(
     # Sidebar panel for inputs ----
     sidebarPanel(
       
-      # Input: Slider for the number of bins ----
+      # Input: Rippmenüü tervisehinnangu valimiseks
       selectInput(inputId = "health",
                   label = "Tervise kategooria:",
                   choices = c("All", levels(students$health)),
                   selected = 'All'),
       
+	  # Input: Raadionupp regressioonsirge lisamiseks või eemaldamiseks
       radioButtons(inputId = 'valik',
                    label = 'Lisa regressioonsirge:',
                    choices = c('Jah', 'Ei'),
@@ -37,9 +38,10 @@ ui <- fluidPage(
       
       h2('Tudengite andmed'),
       
-      # Output: Histogram ----
+      # Output: Karpdiagramm ----
       plotOutput(outputId = "joonis1"),
       
+	  # Output: Hajuvusdiagramm ----
       plotOutput(outputId = "joonis2")
       
     )
@@ -63,13 +65,18 @@ server <- function(input, output) {
   
   output$joonis1 <- renderPlot({
     
+	# Kuna hakkame muutma jooniseid, siis salvestame andmestiku uue objekti all.
     x <- students
     
+	# Kui valitud on mõni tervise tase, siis filtreerima andmestiku
     if(input$health != 'All'){
       x = students[students$health == input$health, ]
     }
     
+	# Eemaldame puuduvad väärtused
     ilma_na <- complete.cases(x[,c("sport", "weight", "gender")])
+	
+	# Teeme joonise
     ggplot(x[ilma_na,], aes(x = sport, y = weight, colour = gender)) + 
       geom_boxplot() +
       labs(title = 'Kaalu jaotus spordiharjumuste gruppides')
@@ -78,25 +85,30 @@ server <- function(input, output) {
   
   output$joonis2 <- renderPlot({
     
+    # Kuna hakkame muutma jooniseid, siis salvestame andmestiku uue objekti all.
     x <- students
     
+	# Kui valitud on mõni tervise tase, siis filtreerima andmestiku
     if(input$health != 'All'){
       x = students[students$health == input$health, ]
     }
     
+	# Tekitame joonise objekti kus on joonisel ainult punktid...
     joonis2 <- ggplot(x, aes(x = DVR, y = age)) + 
       geom_point() +
       labs(title = 'Vererõhu ja vanuse hajuvusdiagramm')
     
+	# ... ja lisame juurde regressioonsirge vastavalt kasutaja sisendile
     if(input$valik == 'Jah'){
      joonis2 <- joonis2 + geom_smooth(method = 'lm', se = F)
     }
     
+	# Joonis tuleb ka välja "printida"
     joonis2
     
   })
 
 }
 
-# Create Shiny app ----
+# Käivita Shiny rakendus ----
 shinyApp(ui = ui, server = server)
